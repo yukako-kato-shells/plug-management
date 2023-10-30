@@ -1,0 +1,34 @@
+.enable {
+  align-items: center;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: inline-flex;
+  font-family: Lato, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  text-decoration: none;
+  width: 256px;
+  filter: drop-shadow(0 0 3px rgb(0, 0, 0, 0.2));
+}
+
+.disable {
+  align-items: center;
+  color: #717171;
+  background-color: #ececec;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: inline-flex;
+  font-family: Lato, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  text-decoration: none;
+  width: 256px;
+  cursor: default;
+  filter: drop-shadow(0 0 3px rgb(0, 0, 0, 0.2));
+}
