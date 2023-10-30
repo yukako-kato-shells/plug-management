@@ -1,0 +1,93 @@
+.main {
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+
+.header > div {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 18px;
+}
+
+.headerLogo {
+  width: 122px;
+  height: 61px;
+}
+
+.buttonSignIn {
+  background-color: #6FB9B4;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  padding: 6px 16px;
+  font-size: 18px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 3px rgb(0, 0, 0, 0.4));
+}
+
+.firstView {
+  width: 100vw;
+  padding: 100px 32px 32px 50px;
+  background-color: #ECF8F7;
+  height: 65vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+}
+
+.imageBackground {
+  position: absolute;
+  bottom: 0;
+  right: -32px;
+  height: 600px;
+  width: 1200px;
+}
+
+.titleArea {
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.startButton {
+  background-color: #6FB9B4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  border-radius: 30px;
+  width: fit-content;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  filter: drop-shadow(0 0 3px rgb(0, 0, 0, 0.4));
+}
+
+.title {
+  font-size: 54px;
+  font-weight: bold;
+}
+
+.logo {
+  width: 260px;
+  height: 131px;
+}
