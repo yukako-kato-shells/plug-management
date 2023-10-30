@@ -1,0 +1,144 @@
+@media screen and (min-width: 1200px) {
+  .main {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .loginContents {
+    text-align: left;
+    min-width: 500px;
+    padding: 40px 40px 100px 60px;
+  }
+
+  .loginContents > div {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .logo {
+    width: 160px;
+    height: 80px;
+  }
+
+  .detailContents {
+    background-color: #6FB9B4;
+    height: 100vh;
+    width: calc(100vw - 500px);
+  }
+
+  .title {
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+  .linkStartPlug {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 16px;
+  }
+
+  .linkStartPlug span {
+    color: #3c9d97;
+  }
+}
+
+@media screen and (max-width: 1190px) and (min-width: 520px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .loginContents {
+    height: 50vh;
+    width: 100vw;
+    padding: 40px;
+  }
+
+  .loginContents > div {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .logo {
+    width: 160px;
+    height: 80px;
+  }
+
+  .detailContents {
+    background-color: #6FB9B4;
+    width: 100vw;
+    height: 60vh;
+  }
+
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .linkStartPlug span {
+    color: #3c9d97;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .loginContents {
+    width: 100vw;
+    padding: 40px;
+  }
+
+  .loginContents > div {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .logo {
+    width: 120px;
+    height: 60px;
+  }
+
+  .detailContents {
+    background-color: #6FB9B4;
+    width: 100vw;
+    height: 60vh;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .linkStartPlug {
+    font-size: 15px;
+  }
+
+  .linkStartPlug span {
+    color: #3c9d97;
+  }
+}
