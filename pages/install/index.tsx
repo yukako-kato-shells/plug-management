@@ -2,14 +2,14 @@ import { useState } from 'react';
 import CheckBox from '../../component/checkbox';
 import styles from './index.module.css';
 import ButtonWithSlack from '../../component/buttonWithSlack';
+import LayoutRegistration from '../../component/layoutRegistration';
 
 const Install: React.FC = () => {
   const [checkedTerms, setCheckedTerms] = useState<boolean>(false);
   const [checkedEmail, setCheckedEmail] = useState<boolean>(false);
 
   return (
-    <div className={styles.main}>
-      <img src="/assets/img_background.svg" className={styles.imageBackground} />
+    <LayoutRegistration>
       <div className={styles.contentsArea}>
         <div className={styles.titleArea}>
           <img src="/assets/logo-dummy.svg" className={styles.logo} />
@@ -32,7 +32,7 @@ const Install: React.FC = () => {
           </div>
           <div className={styles.buttonArea}>
             <ButtonWithSlack
-              href=""
+              href="https://whole-lionfish-champion.ngrok-free.app/slack/install"
               title="インストールへすすむ"
               disabled={!checkedTerms || !checkedEmail}
             />
@@ -42,7 +42,7 @@ const Install: React.FC = () => {
 
         <div className={styles.memo}>インストール後、すぐメンバーにメッセージが<br />送られることはありませんのでご安心ください</div>
       </div>
-    </div>
+    </LayoutRegistration>
   )
 }
 
