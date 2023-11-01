@@ -16,6 +16,7 @@ interface FormValueProps {
   value: IValue;
   setValue: React.Dispatch<SetStateAction<IValue>>;
   setValues: React.Dispatch<SetStateAction<IValue[]>>;
+  setIsOpenForm: React.Dispatch<SetStateAction<boolean>>;
 }
 
 const FormValue: FC<FormValueProps> = (props) => {
@@ -35,14 +36,16 @@ const FormValue: FC<FormValueProps> = (props) => {
       createValue(props.value).then((res) => {
         props.setValues(res.values);
         props.setValue(defaultIValue);
+        props.setIsOpenForm(false);
+
       }).then((err) => {
         // エラーハンドリング
       })
     } else { // 更新の場合
-      console.log("ここ通ってる")
       updateValue(props.value.uid, props.value).then((res) => {
         props.setValues(res.values);
         props.setValue(defaultIValue);
+        props.setIsOpenForm(false);
       }).then((err) => {
         // エラーハンドリング
       })
