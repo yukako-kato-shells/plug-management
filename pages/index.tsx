@@ -33,10 +33,12 @@ export default function Home() {
             <img src="/assets/logo-dummy.svg" className={styles.logo} />
 
             <div className={styles.grid}>
-              <div className={styles.startButton}>
-                <IconSlack size={28} />
-                <div>Slackに追加してはじめる</div>
-              </div>
+              <Link href='/install'>
+                <div className={styles.startButton}>
+                  <IconSlack size={28} />
+                  <div>Slackに追加してはじめる</div>
+                </div>
+              </Link>
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ const Login: React.FC = () => {
             管理画面に<br />サインインする
           </div>
           <ButtonWithSlack
-            href="https://slack.com/openid/connect/authorize?scope=openid&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Fus-central1-plug-development.cloudfunctions.net%2FauthWithSlack&amp;client_id=6050609319142.6097559104134&amp;state=http://localhost:3000/dashboard"
+            href="https://slack.com/openid/connect/authorize?scope=openid%20email&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Fwhole-lionfish-champion.ngrok-free.app%2Fslack%2Foauth_redirect&amp;client_id=6050609319142.6051238786710&amp;state=http://localhost:3000/dashboard"
             title="Sign in with Slack"
           />
           <div className={styles.linkStartPlug}>
