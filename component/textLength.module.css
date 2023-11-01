@@ -1,0 +1,20 @@
+.textLength {
+  font-weight: normal;
+  min-width: fit-content;
+}
+
+.maxTextLength {
+  color:red;
+}
+
+@media screen and (min-width: 520px) {
+  .textLength {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 519px) {
+  .textLength {
+    font-size: 11px;
+  }
+}

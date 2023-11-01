@@ -1,6 +1,5 @@
 import resolve, { ErrorResponse } from '../../util/axiosWithAuth';
-import { IResGetValues } from '../../interfaces/IResGetValues';
-
+import { IResGetValues } from '../../interfaces/IGetValues';
 
 export const getValues = async (): Promise<IResGetValues> => {
   const url = `/values`;
