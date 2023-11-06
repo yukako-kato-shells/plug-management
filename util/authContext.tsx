@@ -35,8 +35,9 @@ const AuthProvider = ({ children }: AuthProps) => {
   useEffect(() => {
     if (isUserReady && router.query) {
       if (!currentUser) {
-        signInWithCustomToken(auth, String(router.query.t)).then((result) => {
-        }).catch((error) => {
+        signInWithCustomToken(auth, String(router.query.t)).then((_) => {
+          console.log("ログインしました");
+        }).catch((error: any) => {
           console.log("エラーが発生しました");
           console.log(error)
           // NotificationManager.error("エラーが発生しました");

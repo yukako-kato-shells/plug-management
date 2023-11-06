@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { User } from 'firebase/auth';
-import auth from './firebase';
+import auth from '../util/firebase';
 
 /// Default ErrorResponse
 export class ErrorResponse {
@@ -56,26 +56,28 @@ instance.interceptors.response.use(
       // AxiosError
       if (error.response && error.response.data) {
         const axiosError = error as AxiosError<ErrorResponse>;
-        switch (axiosError.response.status) {
-          case 401:
-            typeof window !== "undefined" && (window.location.href = '/401');
-            return Promise.reject(new UnauthorizedError(axiosError.response.data.code, axiosError.response.data.message));
-          case 404:
-            typeof window !== "undefined" && (window.location.href = '/404');
-            return Promise.reject(new NotFoundError(axiosError.response.data.code, axiosError.response.data.message));
-          case 500:
-            typeof window !== "undefined" && (window.location.href = '/500');
-            return Promise.reject(new InternalServerError(axiosError.response.data.code, axiosError.response.data.message));
-          default:
-            return Promise.reject(new ErrorResponse(axiosError.response.data.code, axiosError.response.data.message));
+        if (axiosError.response != undefined) {
+          switch (axiosError.response.status) {
+            case 401:
+              typeof window !== "undefined" && (window.location.href = '/401');
+              return Promise.reject(new UnauthorizedError(axiosError.response.data.code, axiosError.response.data.message));
+            case 404:
+              typeof window !== "undefined" && (window.location.href = '/404');
+              return Promise.reject(new NotFoundError(axiosError.response.data.code, axiosError.response.data.message));
+            case 500:
+              typeof window !== "undefined" && (window.location.href = '/500');
+              return Promise.reject(new InternalServerError(axiosError.response.data.code, axiosError.response.data.message));
+            default:
+              return Promise.reject(new ErrorResponse(axiosError.response.data.code, axiosError.response.data.message));
+          }
         }
       } else {
         // Unknown Error(Responseが存在しない系)
-        return Promise.reject(new ErrorResponse(null, error.message));
+        return Promise.reject(new ErrorResponse(88888, error.message));
       }
     } else {
       // Axios以外のエラー
-      return Promise.reject(new ErrorResponse(null, error.message));
+      return Promise.reject(new ErrorResponse(99999, error.message));
     }
   }
 );

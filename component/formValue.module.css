@@ -1,0 +1,54 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.titleInput {
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 12px;
+  border: 1px solid rgb(186, 186, 186);
+}
+
+.detailInput {
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 12px;
+  resize: none;
+  border: 1px solid rgb(186, 186, 186);
+}
+
+.label {
+  font-size: 18px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.submitButtonArea {
+  margin: 0 auto;
+}
+
+.deleteButtonArea {
+  margin: 0 auto;
+}
+
+.deleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.deleteModalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}

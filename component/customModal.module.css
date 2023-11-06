@@ -1,0 +1,102 @@
+.modalContent {
+  background: white;
+  padding: 24px;
+  border-radius: 6px;
+  z-index: 101;
+  color: #3A3633;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.closeButton {
+  top: 24px;
+  right: 24px;
+  position: absolute;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+}
+
+
+.title {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+ /* Chrome, Safari 対応 */
+ .content::-webkit-scrollbar {
+  display:none;
+}
+
+/* Desktop */
+@media screen and (min-width: 959px) {
+  .modalContent {
+    position: relative;
+    z-index: 101;
+  }
+
+  .content {
+    max-height: calc(100vh - 180px);
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    /* Firefox 対応 */
+    scrollbar-width: none;
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 520px) and (max-width: 959px) {
+  .modalContent {
+    position: relative;
+    z-index: 101;
+    margin: 0 16px;
+  }
+
+  .content {
+    margin: 32px 0px 16px 0;
+    padding: 0px 24px;
+    max-height: calc(100vh - 180px);
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    /* Firefox 対応 */
+    scrollbar-width: none;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 519px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .modalContent {
+    margin: 16px;
+    position: relative;
+    z-index: 101;
+    font-size: 15px;
+    width: calc(100vw - 32px);
+  }
+
+  .content {
+    max-height: 80vh;
+    max-width: calc(100vw - 80px);
+  }
+}
