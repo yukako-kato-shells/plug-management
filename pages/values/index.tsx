@@ -9,6 +9,8 @@ import _ from 'lodash';
 import FormValue from "../../component/formValue";
 import DefaultInputArea from "../../component/value/defaultInputArea";
 import { MAX_COUNT_VALUES } from "../../util/constant";
+import { useRouter } from "next/router";
+import { useAuth } from "../../util/authContext";
 
 const InputValues: FC = () =>{
   const [values, setValues] = useState<IValue[]>([]);
@@ -17,10 +19,7 @@ const InputValues: FC = () =>{
 
   useEffect(() => {
     getValues().then((res) => {
-      console.log(res.values)
       setValues(res.values);
-
-      console.log(res.values.length)
       if (res.values.length == 0) {
         setIsOpenForm(true);
       }

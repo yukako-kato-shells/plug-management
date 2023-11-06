@@ -22,10 +22,6 @@ interface FormValueProps {
 const FormValue: FC<FormValueProps> = (props) => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false);
 
-  useEffect(() => {
-    console.log(props.value)
-  }, [props.value])
-
   const onSave = () => {
     if (props.value.title == "" || props.value.detail == "") {
       // NotificationManager.error("タイトルと概要を入力してください");

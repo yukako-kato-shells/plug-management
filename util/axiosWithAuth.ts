@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { User } from 'firebase/auth';
-import auth from './firebase';
+import auth from '../util/firebase';
 
 /// Default ErrorResponse
 export class ErrorResponse {
