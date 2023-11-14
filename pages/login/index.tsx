@@ -11,8 +11,7 @@ import { toast } from "react-toastify";
 const Login: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useAuth();
-  const authUrl = "https://slack.com/openid/connect/authorize?scope=openid%20email&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Fvalued-bobcat-capital.ngrok-free.app%2Flogin&amp;client_id=6050609319142.6051238786710"
-
+  const authUrl = `https://slack.com/openid/connect/authorize?scope=openid&response_type=code&redirect_uri=${process.env.NEXT_PUBLIC_API_EXTERNAL_ROOT_URL}/login&client_id=${process.env.NEXT_PUBLIC_SLACK_CLIENT_ID}`
   useEffect(() => {
     //　ログイン処理
     if (router.isReady && router.query) {
@@ -35,7 +34,6 @@ const Login: React.FC = () => {
           <div className={styles.title}>
             管理画面に<br />サインインする
           </div>
-          {/* <div onClick={() => onClick()}>aaaaa</div> */}
           <ButtonWithSlack
             href={currentUser ? '/dashboard' : authUrl}
             title="Sign in with Slack"
