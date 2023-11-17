@@ -1,0 +1,28 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  display: flex;
+  justify-content: right;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.firstFloor {
+  /* height: calc((100vh - 72px - 40px * 2) * 0.6); */
+  display: flex;
+  gap: 24px;
+}
+
+.secondFloor {
+  height:calc((100vh - 72px - 40px * 2) * 0.4);
+  display: flex;
+  gap: 24px;
+}

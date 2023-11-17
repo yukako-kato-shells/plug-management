@@ -1,0 +1,27 @@
+.loadingContents {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+}
+
+@media screen and (min-width: 1200px) {
+  .permanentBlur {
+    filter: blur(24px);
+  }
+}
+
+
+@media screen and (max-width: 1199px) and (min-width: 520px) {
+  .permanentBlur {
+    filter: blur(2.5vw);
+  }
+}
+
+@media screen and (max-width: 519px) {
+  .permanentBlur {
+    filter: blur(4.5vw);
+  }
+}
