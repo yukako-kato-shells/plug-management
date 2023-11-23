@@ -77,7 +77,7 @@ const Layout:React.FC<LayoutProps> = (props) => {
                   <div>Loading...</div>
                 </div>
                 :
-                <>{props.children}</>
+                props.children
               }
             </div>
           </div>

@@ -1,0 +1,145 @@
+@media screen and (min-width: 1200px) {
+  .bold {
+    font-weight: bold;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    max-width: 800px;
+  }
+
+  .memo {
+    font-size: 14px;
+    color: var(--color-memo);
+  }
+
+  .plan {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .planCard {
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .planDetail {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+
+  .planDetailTitle {
+    font-weight: bold;
+    width: 200px;
+    min-width: 200px;
+  }
+
+  /* billing */
+  .billing {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .billingWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+  }
+
+
+  .billingCardWrapper {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .billingCard {
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-memo);
+  }
+
+  .dotBar {
+    height: 240px;
+    width: 2px;
+    border-left: 2px dashed var(--color-memo);
+    position: absolute;
+    top: 50px;
+    left: 5px;
+  }
+
+  .cardFreeTrial {
+    background-color: #D7EDEC;
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cardFreeTrialTitle {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .price0 {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .cardFirstBilling {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cardFirstBillingTitleWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cardFirstBillingTitlePrice {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 24px;
+  }
+
+  .buttonArea {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
+}

@@ -16,6 +16,7 @@ const DashboardCoreAction: React.FC<DashboardCoreActionProps> = (props) => {
           <Link href=""><div className={styles.link}>詳細を見る</div></Link>
         </div>
         <div className={styles.coreActions}>
+        { props.data.length == 0 && <div className={styles.noActions}>この期間にアクションはありません</div>}
         {
           props.data.slice(0,2).map((action, index) => {
             return (

@@ -1,0 +1,67 @@
+.cardForm {
+  max-width: 500px;
+}
+
+.cardForm label {
+  font-size: 14px;
+  color: #6A6A6A;
+}
+
+.cardForm label {
+  font-size: 14px;
+  color: #6A6A6A;
+}
+
+.currentCardInfo {
+  background-color: rgb(230, 230, 230);
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.lower {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.lower > div {
+  width: 50%;
+}
+
+.label {
+  margin: 0px 8px;
+}
+
+.form input {
+  line-height: 30px;
+}
+
+.submitArea {
+  display: flex;
+  justify-content: right;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .form {
+    height: 46px;
+    padding: 12px;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 8px;
+    margin: 0px 8px 16px 8px;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 768px) {
+  .form {
+    height: 54px;
+    padding: 12px;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 8px;
+    margin: 0px 8px 16px 8px;
+    background-color: white;
+  }
+}

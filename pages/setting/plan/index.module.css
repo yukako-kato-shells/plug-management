@@ -62,4 +62,14 @@
     padding: 8px 16px;
     cursor: pointer;
   }
+
+  .planName {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .buttonToCustomerPortal {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }

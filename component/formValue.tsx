@@ -1,4 +1,4 @@
-import { FC,useEffect,  SetStateAction, useState } from 'react';
+import { FC, SetStateAction, useState } from 'react';
 import styles from './formValue.module.css';
 import _ from 'lodash';
 import { TextLength } from './textLength';
@@ -10,7 +10,7 @@ import { deleteValue } from '../api/values/deleteValue';
 import { HiOutlineTrash } from "react-icons/hi";
 import CustomModal from './customModal';
 import ButtonDefault from './buttonDefault';
-//import { NotificationManager } from 'react-notifications';
+import { toast } from "react-toastify";
 
 interface FormValueProps {
   value: IValue;
@@ -24,7 +24,7 @@ const FormValue: FC<FormValueProps> = (props) => {
 
   const onSave = () => {
     if (props.value.title == "" || props.value.detail == "") {
-      // NotificationManager.error("タイトルと概要を入力してください");
+      toast.error("タイトルと概要を入力してください");
       return;
     }
 
