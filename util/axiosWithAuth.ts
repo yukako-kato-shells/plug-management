@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { User } from 'firebase/auth';
 import auth from '../util/firebase';
+import { env } from 'process';
 
 /// Default ErrorResponse
 export class ErrorResponse {
@@ -22,13 +23,18 @@ export class InternalServerError implements ErrorResponse {
   constructor(public code: number, public message: string) { }
 }
 
-const config: AxiosRequestConfig = {
+let headers: any = {};
+headers["Content-Type"] = "application/json";
+if (process.env.NODE_ENV == "development") {
+  headers["ngrok-skip-browser-warning"] = "69420"; // これを入れないとngrokの警告が出る
+}
+
+let config: AxiosRequestConfig = {
   responseType: "json",
-  headers: {
-    "Content-Type": "application/json",
-  },
+  headers: headers,
   baseURL: process.browser ? process.env.NEXT_PUBLIC_API_EXTERNAL_ROOT_URL : process.env.NEXT_PUBLIC_API_INTERNAL_ROOT_URL
 }
+
 const instance = axios.create(config);
 
 // リクエストの前に処理を挟み込む
