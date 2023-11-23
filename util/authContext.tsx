@@ -1,8 +1,8 @@
-import { getRedirectResult, onAuthStateChanged, signInWithCustomToken, signOut, User } from 'firebase/auth';
-import router, { useRouter } from 'next/router';
+import { onAuthStateChanged, signInWithCustomToken, signOut, User } from 'firebase/auth';
+import { useRouter } from 'next/router';
 import { createContext, useEffect, useState, useContext } from 'react';
 import auth from './firebase';
-import { ErrorResponse } from './axiosWithAuth';
+import { toast } from "react-toastify";
 
 type FirebaseUserType = User | null;
 
@@ -24,7 +24,6 @@ export const useAuth = () => {
 const AuthProvider = ({ children }: AuthProps) => {
   const [currentUser, setCurrentUser] = useState<FirebaseUserType>(null);
   const [isUserReady, setIsUserReady] = useState<boolean>(false);
-  const { locale } = useRouter();
   const router = useRouter();
 
   const value: AuthContextType = {
@@ -40,7 +39,7 @@ const AuthProvider = ({ children }: AuthProps) => {
         }).catch((error: any) => {
           console.log("エラーが発生しました");
           console.log(error)
-          // NotificationManager.error("エラーが発生しました");
+          toast.error("エラーが発生しました");
         })
       }
     }

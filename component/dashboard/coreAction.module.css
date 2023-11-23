@@ -104,3 +104,10 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
+
+.noActions {
+  font-size: 14px;
+  color: var(--color-memo);
+  text-align: center;
+  margin: 24px 0;
+}

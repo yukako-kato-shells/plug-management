@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.3",
+    "@stripe/react-stripe-js": "^2.4.0",
+    "@stripe/stripe-js": "^2.2.0",
+    "@tanstack/react-table": "^8.10.7",
     "@types/node": "20.8.9",
     "@types/react-dom": "18.2.14",
     "axios": "^0.27.2",

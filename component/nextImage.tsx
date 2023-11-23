@@ -42,17 +42,17 @@ const NextImage: React.FC<NextImageProps> = (props) => {
     }, 3000);
   }, [])
 
-  const loadingComplete = ({naturalWidth, naturalHeight }) => {
-    setImageIsReady(true);
+  // const loadingComplete = ({naturalWidth, naturalHeight }) => {
+  //   setImageIsReady(true);
 
-    if (props.onComplete) {
-      const size: SizeProps = {
-        width: naturalWidth,
-        height: naturalHeight
-      }
-      props.onComplete(size);
-    }
-  }
+  //   if (props.onComplete) {
+  //     const size: SizeProps = {
+  //       width: naturalWidth,
+  //       height: naturalHeight
+  //     }
+  //     props.onComplete(size);
+  //   }
+  // }
 
   const createImageComponent = (needZoom: boolean, layout: string, objectFit: 'contain' | 'cover') => {
     switch(layout) {
@@ -73,7 +73,7 @@ const NextImage: React.FC<NextImageProps> = (props) => {
               const baseImageSrc = props.fallbackSrc ? props.fallbackSrc : imageSrc.replace('_resized', '');
               setImageSrc(baseImageSrc);
             }}
-            onLoadingComplete={loadingComplete}
+            // onLoadingComplete={loadingComplete}
             style={props.cssProperties ?
               // CSSPropertiesが注入されていたらそのまま使う
               props.cssProperties
@@ -102,7 +102,7 @@ const NextImage: React.FC<NextImageProps> = (props) => {
               const baseImageSrc = props.fallbackSrc ? props.fallbackSrc : imageSrc.replace('_resized', '');
               setImageSrc(baseImageSrc);
             }}
-            onLoadingComplete={loadingComplete}
+            // onLoadingComplete={loadingComplete}
             style={props.cssProperties ?
               // CSSPropertiesが注入されていたらそのまま使う
               props.cssProperties

@@ -54,7 +54,11 @@ const LayoutSetting: React.FC<LayoutSettingProps> = (props) => {
         <div className={styles.children}>
           <div className={styles.title}>{props.title}</div>
           <div className={styles.contents}>
-          {props.children}
+            { props.isLoading ?
+              <div className={styles.loading}><img src="/assets/animation_spinner.gif" width={100} height={100} /></div>
+              :
+              props.children
+            }
           </div>
         </div>
       </div>
