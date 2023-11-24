@@ -30,11 +30,11 @@ const LayoutSetting: React.FC<LayoutSettingProps> = (props) => {
       <div className={styles.contentsArea}>
         <div className={styles.menu}>
           <Link
-            href="/setting/account"
-            className={styles.menuLabel + " " + (selectedMenuName == "account" ? styles.menuLabelSelected : "")}
-            onClick={() => onClick("account")}
+            href="/setting/mail"
+            className={styles.menuLabel + " " + (selectedMenuName == "mail" ? styles.menuLabelSelected : "")}
+            onClick={() => onClick("mail")}
           >
-            アカウント管理
+            メールアドレス管理
           </Link>
           <Link
             href="/setting/value"
