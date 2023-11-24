@@ -73,8 +73,9 @@ const Layout:React.FC<LayoutProps> = (props) => {
             <div className={styles.content}>
               {isLoading ?
                 <div className={styles.loadingWindow}>
-                  <img src='/assets/animation_spinner.gif' />
-                  <div>Loading...</div>
+                  <div>
+                    <img src='/assets/animation_spinner.gif' />
+                  </div>
                 </div>
                 :
                 props.children
