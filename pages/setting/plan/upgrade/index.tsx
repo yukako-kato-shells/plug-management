@@ -7,7 +7,6 @@ import { getPlanUpgrade } from "../../../../api/getPlanUpgrade";
 import styles from './index.module.css';
 import { IResGetPlanUpgrade, defaultIResGetPlanUpgrade } from "../../../../interfaces/IGetPlanUpgrade";
 import UpgradePlanDetail from "../../../../component/plan/planDetail";
-import UpgradePlanBilling from "../../../../component/plan/billing";
 
 const Upgrade: React.FC = () => {
   const router = useRouter();
@@ -62,11 +61,7 @@ const Upgrade: React.FC = () => {
               </div>
             </div>
           </div>
-          {isProcessing ?
-            <UpgradePlanBilling setIsProcessing={setIsProcessing} />
-            :
-            <UpgradePlanDetail data={data} setIsProcessing={setIsProcessing} />
-          }
+          <UpgradePlanDetail data={data} />
         </div>
       </LayoutSetting>
     </Layout>

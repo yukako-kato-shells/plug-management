@@ -12,3 +12,9 @@ export function convertDateFormat(dateString: string): string {
 
   return `${year}/${month}/${day} (${dayOfWeek}) ${hours}:${minutes}`;
 }
+
+// メールアドレスのバリデーション
+export const validateEmail = (email: string) => {
+  var regex = new RegExp(/^[A-Za-z0-9]{1}[A-Za-z0-9_.+-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/);
+  return regex.test(email) ? true : false;
+}

@@ -73,8 +73,9 @@ const Layout:React.FC<LayoutProps> = (props) => {
             <div className={styles.content}>
               {isLoading ?
                 <div className={styles.loadingWindow}>
-                  <img src='/assets/animation_spinner.gif' />
-                  <div>Loading...</div>
+                  <div>
+                    <img src='/assets/animation_spinner.gif' />
+                  </div>
                 </div>
                 :
                 props.children
@@ -124,7 +125,7 @@ const MenuBar: React.FC<MenuBarProps> = (props) => {
         />
       </Link>
       <Link
-        href="/setting/account"
+        href="/setting/mail"
         className={styles.menuButton + " " + (props.selectedIconName == "setting" ? styles.menuButtonSelected : "")}
         onClick={() => {
           localStorage.setItem('selectedMenu', "setting");

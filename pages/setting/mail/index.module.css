@@ -1,0 +1,88 @@
+@media screen and (min-width: 1200px) {
+  .formWrapper {
+    margin: 32px 0px;
+    position: relative;
+  }
+  
+  .formWrapper input {
+    width: 100%;
+    background-color: #F2F1F1;
+    border-radius: 4px;
+    border: none;
+    padding: 13px;
+    font-size: 16px;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #D7EDEC;
+    padding: 4px 16px;
+    border-radius: 6px;
+  }
+
+  .currentEmail {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 16px 0px 40px 0px;
+  }
+  
+  .label {
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    width: 90px;
+    text-align: center;
+    font-size: 14px;
+    margin-left: 8px;
+  }
+  
+  .done {
+    background: pink;
+  }
+  
+  .ongoing {
+    background: rgb(94, 199, 255);
+  }
+  
+  .errMsg {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 8px;
+    margin-left: 4px;
+  }
+  
+  .formTitle {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 25px;
+  }
+
+  .memo {
+    font-size: 13px;
+    color: var(--color-memo);
+    margin: 4px 8px;
+  }
+
+  .form {
+    max-width: 500px;
+  }
+}
+
+
+/* mobile */
+@media screen and (max-width: 1199px) {
+  .formTitle {
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 20px;
+  }
+
+  .memo {
+    font-size: 11px;
+    color: var(--color-memo);
+    margin: 2px 0px;
+    line-height: 16px;
+  }
+}

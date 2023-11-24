@@ -5,6 +5,7 @@ interface ButtonDefaultProps {
   text: string;
   onClick?: () => void;
   href?: string;
+  disabled?: boolean;
 }
 
 const ButtonDefault: React.FC<ButtonDefaultProps> = (props) => {
@@ -18,12 +19,15 @@ const ButtonDefault: React.FC<ButtonDefaultProps> = (props) => {
         </div>
       </Link>
       :
-      <div
+      <button
+        type='button'
         className={styles.button}
         onClick={props.onClick}
+        disabled={props.disabled}
+        style={{ opacity: props.disabled ? 0.5 : 1 }}
       >
         {props.text}
-      </div>
+      </button>
   )
 }
 

@@ -2,10 +2,10 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import { IResGetPlanUpgrade } from '../../interfaces/IGetPlanUpgrade';
 import ButtonDefault from '../buttonDefault';
 import styles from './planDetail.module.css';
+import { getCustomerPortalSession } from '../../api/getCustomerPortalSession';
 
 interface UpgradePlanDetailProps {
   data: IResGetPlanUpgrade;
-  setIsProcessing: Dispatch<SetStateAction<boolean>>;
 }
 
 const UpgradePlanDetail: React.FC<UpgradePlanDetailProps> = (props) => {
@@ -61,7 +61,12 @@ const UpgradePlanDetail: React.FC<UpgradePlanDetailProps> = (props) => {
       <div className={styles.buttonArea}>
         <ButtonDefault
           text={"支払い方法の追加へすすむ"}
-          onClick={() => {props.setIsProcessing(true)}}
+          onClick={() => {
+            getCustomerPortalSession().then((res) => {
+              window.location.href = res.url;
+              })
+            }
+          }
         />
       </div>
     </div>
