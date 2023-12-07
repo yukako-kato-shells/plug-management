@@ -1,42 +1,66 @@
-import { SetStateAction, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './inputPeriod.module.css';
 import { BiCalendar } from "react-icons/bi";
 
 interface InputPeriodProps {
   registeredMonth: string;
+  beginningMonthOfTerm: number;
   period: Period;
-  setPeriod: React.Dispatch<SetStateAction<Period>>;
+  onChangePeriod: (period: Period) => void;
 }
 
 
-// 登録月から現在までの年月リストを取得
-function getSelectMonthList(registeredMonth: string): string[] {
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth() + 1;
+// 期間指定できる年月のリストを取得
+// 期間の初め：登録年月の直前の期初月まで
+// 期間の終わり：現在から直近の次の期初月末まで
 
-  const [startYear, startMonth] = registeredMonth.split('-').map(Number);
+// param
+// registeredMonth: 登録年月 (yyyy-mm)
+// beginningMonthOfTerm: 期初月 (yyyy-mm)
+function getSelectMonthList(registeredMonth: string, beginningMonthOfTerm: number): string[] {
   const yearMonthList: string[] = [];
+  const registeredDate = new Date(registeredMonth);
+  const now = new Date();
 
-  let year = startYear;
-  let month = startMonth;
-
-  while (year < currentYear || (year === currentYear && month <= currentMonth)) {
-    const formattedMonth = ('0' + month).slice(-2);
-    yearMonthList.push(`${year}-${formattedMonth}`);
-
-    month++;
-    if (month > 12) {
-      month = 1;
-      year++;
+  // 開始日の計算
+  let startDate = new Date();
+  // 登録年月が期初月と同じ場合
+  if (registeredDate.getMonth() + 1 == beginningMonthOfTerm) {
+    startDate = registeredDate;
+  } else {
+    if (registeredDate.getMonth() + 1 < beginningMonthOfTerm) {
+      startDate = new Date(registeredDate.getFullYear() - 1, beginningMonthOfTerm - 1, 1);
+    } else {
+      startDate = new Date(registeredDate.getFullYear(), beginningMonthOfTerm - 1, 1);
     }
+  }
+
+  // 終了日の計算
+  let endDate = new Date();
+
+  // 今月が期末月だった場合
+  if (now.getMonth() + 2 == beginningMonthOfTerm) {
+    endDate = new Date(now.getFullYear(), now.getMonth(), 1);
+  } else {
+    if (now.getMonth() + 2 < beginningMonthOfTerm) {
+      endDate = new Date(now.getFullYear(), beginningMonthOfTerm - 2, 1);
+    } else {
+      endDate = new Date(now.getFullYear() + 1, beginningMonthOfTerm - 2, 1);
+    }
+  }
+
+  while (startDate <= endDate) {
+    let year = startDate.getFullYear();
+    let month = startDate.getMonth() + 1; // 月は0-indexedなので1を加える
+    yearMonthList.push(`${year}-${String(month).padStart(2, '0')}`); // 年月の形式にフォーマット
+    startDate.setMonth(startDate.getMonth() + 1); // 1ヶ月進める
   }
   return yearMonthList;
 }
 
 function compareYearMonths(yearMonth1: string, yearMonth2: string): number {
-  const [year1, month1] = yearMonth1.split('-').map(Number);
-  const [year2, month2] = yearMonth2.split('-').map(Number);
+  const [year1, month1] = yearMonth1.split("-");
+  const [year2, month2] = yearMonth2.split("-");
 
   if (year1 === year2) {
     if (month1 === month2) {
@@ -49,20 +73,28 @@ function compareYearMonths(yearMonth1: string, yearMonth2: string): number {
   }
 }
 
+const formatPeriod = (dateStr: string) => {
+  return dateStr.replace("-", "/")
+}
+
 const InputPeriod: React.FC<InputPeriodProps> = (props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [tmpPeriod, setTmpPeriod] = useState<Period>({start_month: props.period.start_month, end_month: props.period.end_month})
-  
+
+  useEffect(() => {
+    setTmpPeriod(props.period)
+  }, [props])
+
   const onSave = () => {
-    props.setPeriod(tmpPeriod);
+    props.onChangePeriod(tmpPeriod);
     setIsOpen(false);
   }
 
   return (
     <div className={styles.main}>
       <div className={styles.input} onClick={() => setIsOpen(!isOpen)}>
-        <BiCalendar size={28} color={"gray"} />
-        <div>{props.period.start_month} - {props.period.end_month}</div>
+        <BiCalendar size={24} color={"gray"} />
+        <div>{formatPeriod(props.period.start_month)} - {formatPeriod(props.period.end_month)}</div>
       </div>
       {isOpen && <div className={styles.overlay} onClick={() => setIsOpen(false)}></div>}
       { isOpen &&
@@ -81,8 +113,13 @@ const InputPeriod: React.FC<InputPeriodProps> = (props) => {
                       setTmpPeriod(newPeriod);
                     }}
                   >
-                    { getSelectMonthList(props.registeredMonth).map((month: string, index: number) => {
-                      return <option value={month} key={index}>{month}</option>
+                    { getSelectMonthList(props.registeredMonth, props.beginningMonthOfTerm)
+                      .map((month: string, index: number) => {
+                        return (
+                          <option value={month} key={index}>
+                            {month}
+                          </option>
+                        )
                     })}
                   </select>
 
@@ -98,12 +135,16 @@ const InputPeriod: React.FC<InputPeriodProps> = (props) => {
                     const newPeriod = {start_month: tmpPeriod.start_month, end_month: e.target.value}
                     setTmpPeriod(newPeriod);
                   }}
-                >
+                >¥
                     {
-                      getSelectMonthList(props.registeredMonth)
+                      getSelectMonthList(props.registeredMonth, props.beginningMonthOfTerm)
                         .filter(month => compareYearMonths(month, tmpPeriod.start_month) >= 0)
                         .map((month: string, index: number) => {
-                          return <option value={month} key={index}>{month}</option>
+                          return (
+                            <option value={month} key={index}>
+                              {month}
+                            </option>
+                          )
                         })
                       }
                   </select>

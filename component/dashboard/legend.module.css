@@ -1,0 +1,30 @@
+.legends {
+  display: flex;
+  justify-content: left;
+  align-items: end;
+  gap: 32px;
+  color: var(--color-memo);
+  height: 48px;
+}
+
+.legend {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 8px;
+}
+
+.color {
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+  border-radius: 4px;
+}
+
+.legendTitle {
+  /* 三点リーダー */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}

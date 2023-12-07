@@ -1,3 +1,4 @@
+import { IReqGetDashboard, IResGetDashboard } from '../interfaces/IGetDashboard';
 import resolve, { ErrorResponse } from '../util/axiosWithAuth';
 
 export const getDashboard = async (body: IReqGetDashboard): Promise<IResGetDashboard> => {

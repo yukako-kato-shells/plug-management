@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../../../../component/layout";
 import LayoutSetting from "../../../../component/layoutSetting";
 import { useAuth } from "../../../../util/authContext";
@@ -7,6 +7,7 @@ import { getPlanUpgrade } from "../../../../api/getPlanUpgrade";
 import styles from './index.module.css';
 import { IResGetPlanUpgrade, defaultIResGetPlanUpgrade } from "../../../../interfaces/IGetPlanUpgrade";
 import UpgradePlanDetail from "../../../../component/plan/planDetail";
+import UpgradePlanBilling from "../../../../component/plan/billing";
 
 const Upgrade: React.FC = () => {
   const router = useRouter();
@@ -61,7 +62,11 @@ const Upgrade: React.FC = () => {
               </div>
             </div>
           </div>
-          <UpgradePlanDetail data={data} />
+          {isProcessing ?
+            <UpgradePlanBilling setIsProcessing={setIsProcessing} />
+            :
+            <UpgradePlanDetail data={data} setIsProcessing={setIsProcessing} />
+          }
         </div>
       </LayoutSetting>
     </Layout>

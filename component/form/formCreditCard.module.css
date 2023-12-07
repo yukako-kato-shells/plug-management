@@ -38,11 +38,6 @@
   line-height: 30px;
 }
 
-.submitArea {
-  display: flex;
-  justify-content: right;
-}
-
 /* Mobile */
 @media screen and (max-width: 768px) {
   .form {
