@@ -23,7 +23,7 @@ export interface Value {
 const Dashboard: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useAuth();
-  const [period, setPeriod] = useState<Period>({start_month: '', end_month: ""})
+  const [period, setPeriod] = useState<Period>({start_month: '', end_month: ''})
   const [values, setValues] = useState<IResGetDashboardValueListDetail[]>([]);
   const [valueUID, setValueUID] = useState<string>("");
   const [data, setData] = useState<IResGetDashboard>(defalutResGetDashboard);
@@ -31,7 +31,6 @@ const Dashboard: React.FC = () => {
   // 初回アクセス
   useEffect(() => {
     if (router.isReady && router.query) {
-      router.query.start_month
       //if (currentUser) {
         // 初回アクセスの場合は、`start_month`と`end_month`は空の状態で送信。
         // その場合は、期初月から　12ヶ月を指定されたものとしてデータが返却される
@@ -58,24 +57,6 @@ const Dashboard: React.FC = () => {
       //}
     }
   }, [currentUser, router.isReady, router.query, valueUID])
-
-  // 期間が変更された場合
-  const changePeriod = (period: Period) => {
-    setPeriod({
-      start_month: period.start_month,
-      end_month: period.end_month,
-    });
-
-    // 現在のURLを取得
-    let url = new URL(window.location.href);
-
-    // クエリパラメータの書き換え
-    url.searchParams.set('start_month', period.start_month);
-    url.searchParams.set('end_month', period.end_month);
-
-    // 書き換えたURLを使ってページをリダイレクト（もしくはその他の方法で利用）
-    window.location.href = url.toString();
-  }
 
   return (
     <Layout>
