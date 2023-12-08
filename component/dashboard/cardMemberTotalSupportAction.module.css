@@ -1,0 +1,24 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.titleArea {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.coreActions {
+  display: flex;
+  flex-direction: column;
+}
+
+.number  {
+  font-size: 48px;
+  font-weight: bold;
+}

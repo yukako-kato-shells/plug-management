@@ -93,7 +93,7 @@ const Dashboard: React.FC = () => {
                 registeredMonth={data.registered_month}
                 beginningMonthOfTerm={data.beginning_month_of_term}
                 period={period}
-                onChangePeriod={changePeriod}
+                setPeriod={setPeriod}
               />
             </div>
           </div>

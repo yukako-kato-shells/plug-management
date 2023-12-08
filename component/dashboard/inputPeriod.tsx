@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styles from './inputPeriod.module.css';
 import { BiCalendar } from "react-icons/bi";
 
@@ -6,7 +6,7 @@ interface InputPeriodProps {
   registeredMonth: string;
   beginningMonthOfTerm: number;
   period: Period;
-  onChangePeriod: (period: Period) => void;
+  setPeriod: Dispatch<SetStateAction<Period>>;
 }
 
 
@@ -85,8 +85,26 @@ const InputPeriod: React.FC<InputPeriodProps> = (props) => {
     setTmpPeriod(props.period)
   }, [props])
 
+    // 期間が変更された場合
+    const changePeriod = (period: Period) => {
+      props.setPeriod({
+        start_month: period.start_month,
+        end_month: period.end_month,
+      });
+
+      // 現在のURLを取得
+      let url = new URL(window.location.href);
+
+      // クエリパラメータの書き換え
+      url.searchParams.set('start_month', period.start_month);
+      url.searchParams.set('end_month', period.end_month);
+
+      // 書き換えたURLを使ってページをリダイレクト（もしくはその他の方法で利用）
+      window.location.href = url.toString();
+    }
+
   const onSave = () => {
-    props.onChangePeriod(tmpPeriod);
+    changePeriod(tmpPeriod);
     setIsOpen(false);
   }
 
