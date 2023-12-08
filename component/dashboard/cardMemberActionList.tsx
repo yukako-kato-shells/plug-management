@@ -31,7 +31,7 @@ const CardMemberActionList: React.FC<CardMemberActionListProps> = (props) => {
       <div className={styles.card}>
         {
             ((currentTab == "coreAction" && props.core_actions.length == 0) || (currentTab == "supportAction" && props.support_actions.length == 0)) ?
-            <div>この期間にアクションはありません</div>
+            <div className={styles.noActions}>この期間にアクションはありません</div>
             :
             <>
               {(currentTab == "coreAction" ? props.core_actions : props.support_actions).map((action, index) => {

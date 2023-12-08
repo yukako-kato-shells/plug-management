@@ -16,7 +16,7 @@ import CardMemberActionList from "../../../component/dashboard/cardMemberActionL
 const MemberDashboard: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useAuth();
-  const [period, setPeriod] = useState<Period>({start_month: '', end_month: ""})
+  const [period, setPeriod] = useState<Period>({start_month: '', end_month: ''})
   const [values, setValues] = useState<IResGetMemberDashboardValueListDetail[]>([]);
   const [valueUID, setValueUID] = useState<string>("");
   const [data, setData] = useState<IResGetMemberDashboard>(defaultIResGetMemberDashboard);
