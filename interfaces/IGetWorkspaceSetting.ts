@@ -1,17 +1,23 @@
 export interface IResGetWorkspaceSetting {
   beginning_month_of_term: number;
-  channnels: {
-    slack_uid: string;
-    name: string;
-    selected: boolean;
-  }[];
+  channels: IResGetWOrkspaceSettingChannel[];
+}
+
+export interface IResGetWOrkspaceSettingChannel {
+  slack_uid: string;
+  name: string;
+  is_public: boolean;
+  selected: boolean;
 }
 
 export const defaultIResGetWorkspaceSetting = {
   beginning_month_of_term: 0,
-  notice_channel: {
-    slack_uid: "",
-    name: "",
-    selected: false,
-  },
+  channels: [],
+}
+
+export const defaultIResGetWorkspaceSettingChannel = {
+  slack_uid: "",
+  name: "",
+  is_public: false,
+  selected: false,
 }
