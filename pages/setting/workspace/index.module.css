@@ -1,27 +1,51 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 80px;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
 .contentTitle {
   font-weight: bold;
   font-size: 18px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.contentDetailNoticeChannel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.displayNoticeChannel {
+  display: flex;
+  align-items: center;
   gap: 8px;
 }
 
-.contentDetail {
+.displayNoticeChannelName {
+  font-size: 19px;
+  font-weight: bold;
+  width: 240px;
+  height: 40px;
+
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  align-items: center;;
+}
+
+.selectNoticeChannel {
+  padding: 8px 16px;
+  border: 1px solid var(--color-memo);
+  border-radius: 6px;
+  background-color: white;
+  font-size: 18px;
 }
 
 .contentDetailBeginningMonth {
@@ -43,13 +67,19 @@
  border-radius: 6px;
  background-color: white;
  font-size: 18px;
- width: 130px;
+ width: 100px;
 }
 
-.editButtonBeginningMonth {
+.editButton {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 14px;
   color: var(--color-link);
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.closeButton {
+  cursor: pointer;
 }
