@@ -34,6 +34,7 @@ const AuthProvider = ({ children }: AuthProps) => {
   useEffect(() => {
     if (isUserReady && router.query) {
       if (!currentUser) {
+        // TODO: base64の文字列をデコード
         signInWithCustomToken(auth, String(router.query.t)).then((_) => {
           console.log("ログインしました");
         }).catch((error: any) => {

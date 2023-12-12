@@ -30,6 +30,13 @@ const LayoutSetting: React.FC<LayoutSettingProps> = (props) => {
       <div className={styles.contentsArea}>
         <div className={styles.menu}>
           <Link
+            href="/setting/workspace"
+            className={styles.menuLabel + " " + (selectedMenuName == "workspace" ? styles.menuLabelSelected : "")}
+            onClick={() => onClick("workspace")}
+          >
+            ワークスペース管理
+          </Link>
+          <Link
             href="/setting/mail"
             className={styles.menuLabel + " " + (selectedMenuName == "mail" ? styles.menuLabelSelected : "")}
             onClick={() => onClick("mail")}
