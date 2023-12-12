@@ -1,0 +1,55 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contentTitle {
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contentDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contentDetailBeginningMonth {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  height: 40px;
+}
+
+.memo {
+  font-size: 14px;
+  font-weight: normal;
+  color: var(--color-memo);
+}
+
+.selectBeginingMonthOfTerm {
+ padding: 8px 16px;
+ border: 1px solid var(--color-memo);
+ border-radius: 6px;
+ background-color: white;
+ font-size: 18px;
+ width: 130px;
+}
+
+.editButtonBeginningMonth {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-link);
+}
