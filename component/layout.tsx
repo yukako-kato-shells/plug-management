@@ -17,9 +17,9 @@ interface LayoutProps {
 const Layout:React.FC<LayoutProps> = (props) => {
   const { currentUser, isUserReady } = useAuth();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(props.isLoading ? props.isLoading : false);
   const [selectedIconName, setSelectedIconName] = useState<string>("dashboard");
   const [member, setMember] = useState<IResGetMember>(defaultIResGetMember);
+  const [finishedGetMember, setFinishedGetMember] = useState<boolean>(false);
 
   useEffect(() => {
     // メニューの現在位置をLocalStorageから取得
@@ -43,8 +43,14 @@ const Layout:React.FC<LayoutProps> = (props) => {
     // ログインしている場合のみ、ユーザー情報を取得する
     getMember().then((res: IResGetMember) => {
       setMember(res);
-
       localStorage.setItem('currentUser', JSON.stringify(res));
+
+      // 管理者でなければ、自身のダッシュボードしか見れない
+      if (!res.is_admin && !(router.pathname == `/members/[uid]` && router.query.uid == res.uid)) {
+        router.push(`/members/${res.uid}`);
+      } else {
+        setFinishedGetMember(true);
+      }
     })
   }, [isUserReady, currentUser])
 
@@ -66,11 +72,13 @@ const Layout:React.FC<LayoutProps> = (props) => {
           <MenuBar
             selectedIconName={selectedIconName}
             setSelectedIconName={setSelectedIconName}
+            isAdmin={member.is_admin}
+            memberUid={member.uid}
           />
           <div className={styles.contentArea}>
             <HeaderBar member={member} />
             <div className={styles.content}>
-              {isLoading ?
+              {(props.isLoading || !finishedGetMember) ?
                 <div className={styles.loadingWindow}>
                   <div>
                     <img src='/assets/animation_spinner.gif' />
@@ -90,6 +98,8 @@ const Layout:React.FC<LayoutProps> = (props) => {
 interface MenuBarProps {
   selectedIconName: string;
   setSelectedIconName: Dispatch<SetStateAction<string>>;
+  isAdmin: boolean;
+  memberUid: string;
 }
 
 const MenuBar: React.FC<MenuBarProps> = (props) => {
@@ -97,21 +107,23 @@ const MenuBar: React.FC<MenuBarProps> = (props) => {
 
   return (
     <div className={styles.menuBar}>
+      { props.isAdmin &&
+        <Link
+          href="/dashboard"
+          className={styles.menuButton + " " + (props.selectedIconName == "dashboard" ? styles.menuButtonSelected : "")}
+          onClick={() => {
+            localStorage.setItem('selectedMenu', "dashboard");
+            props.setSelectedIconName("dashboard");
+          }}
+        >
+          <MdOutlineSpaceDashboard
+            size={30}
+            color={props.selectedIconName == "dashboard" ? "#6FB9B4" : "white"}
+          />
+        </Link>
+      }
       <Link
-        href="/dashboard"
-        className={styles.menuButton + " " + (props.selectedIconName == "dashboard" ? styles.menuButtonSelected : "")}
-        onClick={() => {
-          localStorage.setItem('selectedMenu', "dashboard");
-          props.setSelectedIconName("dashboard");
-        }}
-      >
-        <MdOutlineSpaceDashboard
-          size={30}
-          color={props.selectedIconName == "dashboard" ? "#6FB9B4" : "white"}
-        />
-      </Link>
-      <Link
-        href="/members"
+        href={props.isAdmin ? "/members" : `/members/${props.memberUid}`}
         className={styles.menuButton + " " + (props.selectedIconName == "member" ? styles.menuButtonSelected : "")}
         onClick={() => {
           localStorage.setItem('selectedMenu', "member");
@@ -123,19 +135,21 @@ const MenuBar: React.FC<MenuBarProps> = (props) => {
           color={props.selectedIconName == "member" ? "#6FB9B4" : "white"}
         />
       </Link>
-      <Link
-        href="/setting/mail"
-        className={styles.menuButton + " " + (props.selectedIconName == "setting" ? styles.menuButtonSelected : "")}
-        onClick={() => {
-          localStorage.setItem('selectedMenu', "setting");
-          props.setSelectedIconName("setting");
-        }}
-      >
-        <MdOutlineSettings
-          size={30}
-          color={props.selectedIconName == "setting" ? "#6FB9B4" : "white"}
-        />
-      </Link>
+      { props.isAdmin &&
+        <Link
+          href="/setting/mail"
+          className={styles.menuButton + " " + (props.selectedIconName == "setting" ? styles.menuButtonSelected : "")}
+          onClick={() => {
+            localStorage.setItem('selectedMenu', "setting");
+            props.setSelectedIconName("setting");
+          }}
+        >
+          <MdOutlineSettings
+            size={30}
+            color={props.selectedIconName == "setting" ? "#6FB9B4" : "white"}
+          />
+        </Link>
+      }
     </div>
   )
 }

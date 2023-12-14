@@ -36,6 +36,7 @@ const Upgrade: React.FC = () => {
       <LayoutSetting
         title="プランをアップグレード"
         isLoading={isLoading}
+        setIsLoading={setIsLoading}
       >
         <div className={styles.main}>
           {/* アップグレード内容 */}

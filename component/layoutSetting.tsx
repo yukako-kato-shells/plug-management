@@ -5,6 +5,7 @@ import Link from 'next/link';
 interface LayoutSettingProps {
   title: string;
   children: React.ReactNode;
+  setIsLoading?: React.Dispatch<React.SetStateAction<boolean>>;
   isLoading?: boolean;
 }
 
@@ -20,8 +21,9 @@ const LayoutSetting: React.FC<LayoutSettingProps> = (props) => {
   }, [])
 
   const onClick = (labelName: string) => {
-    setSelectedMenuName(labelName)
-    localStorage.setItem('selectedSettingMenu', labelName)
+    setSelectedMenuName(labelName);
+    localStorage.setItem('selectedSettingMenu', labelName);
+    props.setIsLoading && props.setIsLoading(true);
   }
 
   return (
@@ -59,7 +61,9 @@ const LayoutSetting: React.FC<LayoutSettingProps> = (props) => {
           </Link>
         </div>
         <div className={styles.children}>
-          <div className={styles.title}>{props.title}</div>
+          { !props.isLoading &&
+            <div className={styles.title}>{props.title}</div>
+          }
           <div className={styles.contents}>
             { props.isLoading ?
               <div className={styles.loading}><img src="/assets/animation_spinner.gif" width={100} height={100} /></div>
