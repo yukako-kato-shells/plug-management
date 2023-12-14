@@ -8,6 +8,7 @@ import { getPlan } from "../../../api/getPlan";
 import { IResGetPlan, defaultIResGetPlan } from "../../../interfaces/IGetPlan";
 import Link from "next/link";
 import { getCustomerPortalSession } from "../../../api/getCustomerPortalSession";
+import { toast } from "react-toastify";
 
 const Plan: React.FC = () => {
   const router = useRouter();
@@ -18,18 +19,14 @@ const Plan: React.FC = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    if (router.isReady && router.query) {
-      // if (currentUser) {
-        getPlan().then((res) => {
-          setData(res);
-          setIsLoading(false);
-        }).catch((err) => {
-          console.log(err);
-          setIsLoading(false);
-        })
-      // }
-    }
-  }, []); // currentUser, router.isReady, router.query
+    //if (!router.isReady || !router.query || !currentUser) return;
+    getPlan().then((res) => {
+      setData(res);
+      setIsLoading(false);
+    }).catch((err) => {
+      toast.error("プラン情報の取得に失敗しました");
+    })
+  }, []);
 
   return (
     <Layout>
@@ -42,14 +39,14 @@ const Plan: React.FC = () => {
             <div className={styles.contentTitle}>ご契約プラン</div>
             <div className={styles.bar}></div>
             <div>
-              <div><span className={styles.planName}>{data.plan.current_plan.name}</span>（{data.plan.current_plan.start_date} {data.plan.current_plan.end_date != "" ? data.plan.current_plan.end_date : "より開始"}）</div>
-              {(data.plan.next_plan.name != "" ? <div>ご変更受付済： {data.plan.next_plan.name} （{data.plan.next_plan.start_date}〜）</div> : "")}
+              <div><span className={styles.planName}>{data.current_plan.name}</span>（{data.current_plan.start_date} {data.current_plan.end_date != "" ? data.current_plan.end_date : "より開始"}）</div>
+              {(data.next_plan.name != "" ? <div>ご変更受付済： {data.next_plan.name} （{data.next_plan.start_date}〜）</div> : "")}
             </div>
           </div>
           <div className={styles.content}>
             <div className={styles.contentTitle}>ご利用人数</div>
             <div className={styles.bar}></div>
-            <div>{data.member.number}人（期間：{data.member.start_date} - {data.member.end_date}）</div>
+            <div>{data.next_charge.number}人（期間：{data.next_charge.start_date} - {data.next_charge.end_date}）</div>
           </div>
 
           <div className={styles.card}>
@@ -67,7 +64,7 @@ const Plan: React.FC = () => {
               window.location.href = res.url;
             })
           }}>
-            支払いの履歴・支払い方法の変更はこちら
+            支払いの履歴・クレジットカードの変更はこちら
           </div>
         </div>
       </LayoutSetting>

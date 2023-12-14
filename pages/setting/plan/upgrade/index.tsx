@@ -25,7 +25,6 @@ const Upgrade: React.FC = () => {
           setData(res);
           setIsLoading(false);
         }).catch((err) => {
-          console.log(err);
           setIsLoading(false);
         })
       // }

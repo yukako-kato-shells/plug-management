@@ -12,6 +12,7 @@ import CardMemberTotalCoreAction from "../../../component/dashboard/cardMemberTo
 import CardMemberTotalSupportAction from "../../../component/dashboard/cardMemberTotalSupportAction";
 import CardMemberActionTransition from "../../../component/dashboard/cardMemberActionTransition";
 import CardMemberActionList from "../../../component/dashboard/cardMemberActionList";
+import IconWrapper from "../../../component/iconWrapper";
 
 const MemberDashboard: React.FC = () => {
   const router = useRouter();
@@ -51,7 +52,7 @@ const MemberDashboard: React.FC = () => {
       <div className={styles.main}>
         <div className={styles.titleArea}>
           <div>
-            <img src={data.icon_url} className={styles.icon} />
+            <IconWrapper icon_url={data.icon_url} size={40} />
             <div className={styles.title}>{data.name}さんのダッシュボード</div>
           </div>
           <div className={styles.selectBoxArea}>

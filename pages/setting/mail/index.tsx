@@ -14,7 +14,7 @@ import { updateEmailRequest } from "../../../api/updateEmailRequest";
 const SettingMail: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useAuth();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [currentEmail, setCurrentEmail] = useState<string>('');
   const [newEmail, setNewEmail] = useState<string>('');
   const [inputEmail, setInputEmail] = useState<string>('');
@@ -26,6 +26,9 @@ const SettingMail: React.FC = () => {
       setData(res);
       setCurrentEmail(res.email);
       setNewEmail(res.email_waiting_change);
+      setIsLoading(false);
+    }).catch((err) => {
+      toast.error("アカウント設定の取得に失敗しました");
     })
   }, [])
 

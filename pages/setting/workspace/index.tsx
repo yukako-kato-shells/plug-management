@@ -12,6 +12,8 @@ import { IResGetWOrkspaceSettingChannel, defaultIResGetWorkspaceSetting, default
 import { IResGetWorkspaceSetting } from "../../../interfaces/IGetWorkspaceSetting";
 import { IReqUpdateNoticeChannel } from "../../../interfaces/IUpdateNoticeChannel";
 import { updateNoticeChannel } from "../../../api/updateNoticeChannel";
+import EditButton from "../../../component/setting/customButton";
+import _ from 'lodash';
 
 const SettingWorkspace: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -22,11 +24,14 @@ const SettingWorkspace: React.FC = () => {
   const [isEditingNoticeChannel, setIsEditingNoticeChannel] = useState<boolean>(false);
 
   useEffect(() => {
-    //if (!router.isReady || !router.query || !currentUser)defaultIResGetWorkspaceSetting
+    setIsLoading(true);
+
+    //if (!router.isReady || !router.query || !currentUser) return;
     getWorkspaceSetting().then((res) => {
       setData(res);
       setBeginningMonthOfTerm(res.beginning_month_of_term);
       setNoticeChannel(res.channels.filter(c => c.selected)[0]);
+      setIsLoading(false);
     }).catch((err) => {
       toast.error("ワークスペース設定の取得に失敗しました");
     })
@@ -79,15 +84,14 @@ const SettingWorkspace: React.FC = () => {
             <div className={styles.contentTitle}>
               <div>通知チャンネル設定</div>
               { !isEditingNoticeChannel &&
-                <div
-                  className={styles.editButton}
+                <EditButton
+                  iconType={BsFillPencilFill}
+                  title={"編集する"}
                   onClick={() => {
                     setIsEditingNoticeChannel(true)
                     setIsEditingBeginningMonth(false)
                   }}
-                >
-                  <BsFillPencilFill size={16} /><div>変更する</div>
-                </div>
+                />
               }
             </div>
 
@@ -100,7 +104,7 @@ const SettingWorkspace: React.FC = () => {
                     value={data.channels.filter(c => c.selected)[0].slack_uid}
                     onChange={(e) => onUpdateNoticeChannel(e.target.value)}
                   >
-                    { data.channels.map((channel: IResGetWOrkspaceSettingChannel, index: number) => {
+                    { data.channels.filter(c => c.is_public).map((channel: IResGetWOrkspaceSettingChannel, index: number) => {
                           return (
                             <option value={channel.slack_uid} key={index} disabled={!channel.is_public}>
                               {channel.name}
@@ -128,15 +132,14 @@ const SettingWorkspace: React.FC = () => {
             <div className={styles.contentTitle}>
               <div>期初月設定</div>
               { !isEditingBeginningMonth &&
-                <div
-                  className={styles.editButton}
+                <EditButton
+                  iconType={BsFillPencilFill}
+                  title={"編集する"}
                   onClick={() => {
                     setIsEditingBeginningMonth(true)
                     setIsEditingNoticeChannel(false)
                   }}
-                >
-                  <BsFillPencilFill size={16} /><div>変更する</div>
-                </div>
+                />
               }
             </div>
             <div className={styles.contentDetailBeginningMonth}>

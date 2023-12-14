@@ -1,6 +1,7 @@
 import { FC } from "react"
 import styles from './ranking.module.css';
 import { IResGetDashboardRanking } from "../../interfaces/IGetDashboard";
+import IconWrapper from "../iconWrapper";
 
 interface RankingProps {
   data: IResGetDashboardRanking;
@@ -13,11 +14,10 @@ const Ranking: FC<RankingProps> = (props) => {
         <div className={styles.sectionTitle}>コアアクショントップ５</div>
         <div className={styles.topMember}>
           <div>
-            { props.data.core_action_rank.length == 0 ?
-              <div className={styles.noIconTop} />
-              :
-              <img src={props.data.core_action_rank[0].icon_url} />
-            }
+            <IconWrapper
+              icon_url={props.data.core_action_rank.length == 0 ? "" : props.data.core_action_rank[0].icon_url}
+              size={46}
+            />
           </div>
           <div>{props.data.core_action_rank[0].name}</div>
         </div>
@@ -26,11 +26,10 @@ const Ranking: FC<RankingProps> = (props) => {
             [1, 2, 3, 4].map((num, index) => {
               return (
                 <div className={styles.otherMember} key={index}>
-                  { props.data.core_action_rank[num] == null ?
-                    <div className={styles.noIcon}></div>
-                    :
-                    <img src={props.data.core_action_rank[num].icon_url} />
-                  }
+                  <IconWrapper
+                    icon_url={props.data.core_action_rank[num] == null ? "" : props.data.core_action_rank[num].icon_url}
+                    size={36}
+                  />
                 </div>
               )
             })
@@ -41,11 +40,10 @@ const Ranking: FC<RankingProps> = (props) => {
         <div className={styles.sectionTitle}>サポートアクショントップ５</div>
         <div className={styles.topMember}>
           <div>
-            { props.data.support_action_rank.length == 0 ?
-              <div className={styles.noIconTop} />
-              :
-              <img src={props.data.support_action_rank[0].icon_url} />
-            }
+            <IconWrapper
+              icon_url={props.data.support_action_rank.length == 0 ? "" : props.data.support_action_rank[0].icon_url}
+              size={46}
+            />
           </div>
           <div>{props.data.support_action_rank[0].name}</div>
         </div>
@@ -54,11 +52,10 @@ const Ranking: FC<RankingProps> = (props) => {
             [1, 2, 3, 4].map((num, index) => {
               return (
                 <div className={styles.otherMember} key={index}>
-                  { props.data.core_action_rank[num] == null ?
-                    <div className={styles.noIcon}></div>
-                    :
-                    <img src={props.data.core_action_rank[num].icon_url} />
-                  }
+                  <IconWrapper
+                    icon_url={props.data.core_action_rank[num] == null ? "" : props.data.core_action_rank[num].icon_url}
+                    size={36}
+                  />
                 </div>
               )
             })

@@ -18,13 +18,9 @@
   box-shadow: 0 5px 12.5px 0 rgba(0, 0, 0, .2);
 }
 
-.icon {
-  height: 55px;
-  width: 55px;
-  border-radius: 30px;
-}
-
 .list {
-  display: flex;
-  gap: 16px;
+  display: grid;
+  gap: 24px;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }

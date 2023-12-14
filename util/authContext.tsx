@@ -36,10 +36,8 @@ const AuthProvider = ({ children }: AuthProps) => {
       if (!currentUser) {
         // TODO: base64の文字列をデコード
         signInWithCustomToken(auth, String(router.query.t)).then((_) => {
-          console.log("ログインしました");
+          toast.info("ログインしました");
         }).catch((error: any) => {
-          console.log("エラーが発生しました");
-          console.log(error)
           toast.error("エラーが発生しました");
         })
       }

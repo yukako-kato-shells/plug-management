@@ -3,10 +3,11 @@ import { useAuth } from "../util/authContext";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from './layout.module.css';
-import { IReqGetMember, IResGetMember, defaultIResGetMember } from '../interfaces/IGetMember';
+import { IResGetMember, defaultIResGetMember } from '../interfaces/IGetMember';
 import { getMember } from '../api/getMember';
 import { MdOutlineSpaceDashboard, MdPersonOutline, MdOutlineSettings } from "react-icons/md";
 import Link from 'next/link';
+import IconWrapper from './iconWrapper';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -37,16 +38,14 @@ const Layout:React.FC<LayoutProps> = (props) => {
   }, [])
 
   useEffect(() => {
-    if (isUserReady && currentUser) {
-      // ログインしている場合のみ、ユーザー情報を取得する
-      const paramGetUser: IReqGetMember = {
-        firebase_uid: currentUser.uid, // firebaseUID
-      }
-      getMember(paramGetUser).then((res: IResGetMember) => {
-        setMember(res);
-        localStorage.setItem('currentUser', JSON.stringify(res));
-      })
-    }
+    //if (isUserReady && currentUser) return;
+    
+    // ログインしている場合のみ、ユーザー情報を取得する
+    getMember().then((res: IResGetMember) => {
+      setMember(res);
+
+      localStorage.setItem('currentUser', JSON.stringify(res));
+    })
   }, [isUserReady, currentUser])
 
   return (
@@ -149,11 +148,11 @@ const HeaderBar: React.FC<HeaderBarProps> = (props) => {
   return (
     <div className={styles.headerBar}>
       <div className={styles.workspace}>
-        <div><img src={props.member.workspace_icon_url ? props.member.workspace_icon_url : ""} /></div>
+        <IconWrapper icon_url={props.member.workspace_icon_url} size={40} />
         <div>{props.member.workspace_name}</div>
       </div>
       <div className={styles.member}>
-        <div><img src={props.member.icon_url} /></div>
+        <IconWrapper icon_url={props.member.icon_url} size={40} />
         <div>{props.member.name}</div>
       </div>
     </div>

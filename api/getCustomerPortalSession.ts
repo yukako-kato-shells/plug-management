@@ -2,9 +2,9 @@ import IResGetCustomerPortalSession from '../interfaces/IResGetCustomerPortalSes
 import resolve, { ErrorResponse } from '../util/axiosWithAuth';
 
 export const getCustomerPortalSession = async (): Promise<IResGetCustomerPortalSession> => {
-  const url = `/get_custom_portal_session`;
+  const url = `/getCustomPortalSession`;
   try {
-    const { data } = await resolve.get<IResGetCustomerPortalSession>(url);
+    const { data } = await resolve.post<IResGetCustomerPortalSession>(url);
     return data;
   } catch (error: unknown) {
     throw error as ErrorResponse;
