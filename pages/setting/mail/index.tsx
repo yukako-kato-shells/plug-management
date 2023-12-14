@@ -61,6 +61,7 @@ const SettingMail: React.FC = () => {
       <LayoutSetting
         title="メールアドレス管理"
         isLoading={isLoading}
+        setIsLoading={setIsLoading}
       >
         <div>
           <div className={styles.formWrapper}>

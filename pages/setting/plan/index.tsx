@@ -33,6 +33,7 @@ const Plan: React.FC = () => {
       <LayoutSetting
         title="プラン変更"
         isLoading={isLoading}
+        setIsLoading={setIsLoading}
       >
         <div className={styles.main}>
           <div className={styles.content}>

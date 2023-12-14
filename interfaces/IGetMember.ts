@@ -5,6 +5,7 @@ export interface IResGetMember {
   workspace_uid: string;
   workspace_name: string;
   workspace_icon_url: string;
+  is_admin: boolean;
 }
 
 export const defaultIResGetMember = {
@@ -14,4 +15,5 @@ export const defaultIResGetMember = {
   workspace_uid: "",
   workspace_name: "",
   workspace_icon_url: "",
+  is_admin: false,
 }

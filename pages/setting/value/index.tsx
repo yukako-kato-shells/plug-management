@@ -74,6 +74,7 @@ const Values: React.FC = () => {
       <LayoutSetting
         title="バリュー管理"
         isLoading={isLoading}
+        setIsLoading={setIsLoading}
       >
         <div>
           <div className={styles.title}>

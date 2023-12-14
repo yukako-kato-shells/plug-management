@@ -78,6 +78,7 @@ const SettingWorkspace: React.FC = () => {
       <LayoutSetting
         title="ワークスペース管理"
         isLoading={isLoading}
+        setIsLoading={setIsLoading}
       >
         <div className={styles.main}>
           <div className={styles.content}>
