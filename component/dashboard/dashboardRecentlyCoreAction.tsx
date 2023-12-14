@@ -3,6 +3,7 @@ import styles from './dashboardRecentlyCoreAction.module.css'
 import { convertDateFormat } from '../../util/common';
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import { IResGetDashboardRecentlyCoreAction } from '../../interfaces/IGetDashboard';
+import IconWrapper from '../iconWrapper';
 
 
 interface DashboardRecentlyCoreActionProps {
@@ -40,12 +41,12 @@ const DashboardRecentlyCoreAction: React.FC<DashboardRecentlyCoreActionProps> = 
                   {/* 送信者、受信者 */}
                   <div className={styles.memberArea}>
                     <div className={styles.member}>
-                      <img src={action.user_from.icon_url} alt="member_from" className={styles.iconMember} />
+                      <IconWrapper icon_url={action.user_from.icon_url} size={28} />
                       <div>{action.user_from.name}</div>
                     </div>
                     <MdOutlineKeyboardDoubleArrowRight />
                     <div className={styles.member}>
-                      <img src={action.user_to.icon_url} alt="member_to" className={styles.iconMember} />
+                      <IconWrapper icon_url={action.user_to.icon_url} size={28} />
                       <div>{action.user_to.name}</div>
                     </div>
                   </div>

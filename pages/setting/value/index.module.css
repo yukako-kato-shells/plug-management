@@ -1,0 +1,73 @@
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+
+.values {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.value {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.valueTitle {
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonArea {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.inputTitle {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--color-memo);
+  border-radius: 4px;
+}
+
+.inputDetail {
+  padding: 10px 16px;
+  border: 1px solid var(--color-memo);
+  border-radius: 4px;
+  font-weight: normal;
+  line-height: 22px;
+  font-family: auto;
+}
+
+.editArea {
+  display: flex;
+  justify-content: space-between;
+}
+
+.editAreaSave {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.saveButton {
+  padding: 6px 14px;
+  background-color: var(--color-primary);
+  border-radius: 6px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.newButtonArea {
+  padding: 48px;
+  display: flex;
+  justify-content: center;
+}

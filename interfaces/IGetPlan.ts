@@ -1,5 +1,6 @@
-export interface IResGetPlanMember {
+export interface IResGetPlanNextCharge {
   number: number,
+  price: number,
   start_date: string,
   end_date: string,
 }
@@ -16,37 +17,38 @@ export interface IResGetPlanPayment {
   tax_parcentage: number,
 }
 
-export interface IResGetPlanPlanPLan {
+export interface IResGetPlanPlan {
   name: string,
   start_date: string,
   end_date: string,
-}
-
-export interface IResGetPlanPlan {
-  current_plan: IResGetPlanPlanPLan,
-  next_plan: IResGetPlanPlanPLan,
+  price: number,
+  number: number,
 }
 
 export interface IResGetPlan {
-  plan: IResGetPlanPlan,
-  member: IResGetPlanMember,
+  current_plan: IResGetPlanPlan,
+  next_plan: IResGetPlanPlan,
+  next_charge: IResGetPlanNextCharge,
 }
 
 export const defaultIResGetPlan: IResGetPlan = {
-  plan: {
-    current_plan: {
-      name: "",
-      start_date: "",
-      end_date: "",
-    },
-    next_plan: {
-      name: "",
-      start_date: "",
-      end_date: "",
-    },
-  },
-  member: {
+  current_plan: {
+    name: "",
+    start_date: "",
+    end_date: "",
+    price: 0,
     number: 0,
+  },
+  next_plan: {
+    name: "",
+    start_date: "",
+    end_date: "",
+    price: 0,
+    number: 0,
+  },
+  next_charge: {
+    number: 0,
+    price: 0,
     start_date: "",
     end_date: "",
   },

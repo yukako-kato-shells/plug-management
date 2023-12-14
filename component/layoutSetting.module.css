@@ -47,7 +47,17 @@
 .children {
   width: 100%;
   height: 100%;
-  padding: 32px 0px 32px 56px;
+  padding: 32px 24px 32px 56px;
+  overflow: auto;
+  /*IE(Internet Explorer)・Microsoft Edgeへの対応*/
+  -ms-overflow-style: none;
+  /*Firefoxへの対応*/
+  scrollbar-width: none;
+}
+
+ /*Google Chrome、Safariへの対応*/
+ .children::-webkit-scrollbar{
+  display: none;
 }
 
 .title {

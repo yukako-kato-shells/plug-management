@@ -1,0 +1,9 @@
+.customButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-link);
+  cursor: pointer;
+  font-weight: normal;
+}

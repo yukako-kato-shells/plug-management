@@ -1,11 +1,10 @@
-import { IResDeleteValue } from '../../interfaces/IDeleteValue';
-import { IResUpdateValue } from '../../interfaces/IUpdateValue';
+import { IReqDeleteValue, IResDeleteValue } from '../../interfaces/IDeleteValue';
 import resolve, { ErrorResponse } from '../../util/axiosWithAuth';
 
-export const deleteValue = async (uid: string): Promise<IResDeleteValue> => {
-  const url = `/values/${uid}`;
+export const deleteValue = async (body: IReqDeleteValue): Promise<IResDeleteValue> => {
+  const url = `/deleteValue`;
   try {
-    const { data } = await resolve.delete<IResUpdateValue>(url);
+    const { data } = await resolve.post<IResDeleteValue>(url, body);
     return data;
   } catch (error: unknown) {
     throw error as ErrorResponse;

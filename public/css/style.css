@@ -17,7 +17,7 @@
   --based-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   --based-box-shadow-hover: 2px 2px 5px rgb(214, 214, 214);
   --based-border: 1px solid;
-  --based-border-color: #E5E5E5;
+  --based-border-color: #d0d0d0;
   --profile-panel-bg-color: rgba(255, 255, 255, 0.9);
   --profile-panel-bg-color-with-alpha: rgba(255, 255, 255, 0.6);
 }

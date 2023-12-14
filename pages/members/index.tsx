@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { getWorkspaceMembers } from "../../api/getMembers";
 import { IGetWorkspaceMembersMember } from "../../interfaces/IGetWorkspaceMembers";
 import Link from "next/link";
+import IconWrapper from "../../component/iconWrapper";
 
 const Members: React.FC = () => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const Members: React.FC = () => {
               return (
                 <Link key={index} href={`/members/${member.uid}`}>
                   <div className={styles.card}>
-                    <img src={member.icon_url} className={styles.icon} />
+                    <IconWrapper icon_url={member.icon_url} size={55} />
                     <div>{member.name}</div>
                   </div>
                 </Link>

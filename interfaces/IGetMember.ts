@@ -1,7 +1,3 @@
-export interface IReqGetMember {
-  firebase_uid: string;
-}
-
 export interface IResGetMember {
   uid: string;
   name: string;

@@ -3,6 +3,7 @@ import { IResGetMemberDashboardAction } from "../../interfaces/IGetMemberDashboa
 import styles from './cardMemberActionList.module.css';
 import { convertDateFormat } from "../../util/common";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import IconWrapper from "../iconWrapper";
 
 interface CardMemberActionListProps {
   core_actions: IResGetMemberDashboardAction[];
@@ -44,12 +45,12 @@ const CardMemberActionList: React.FC<CardMemberActionListProps> = (props) => {
                       {/* 送信者、受信者 */}
                       <div className={styles.memberArea}>
                         <div className={styles.member}>
-                          <img src={action.member_from.icon_url} alt="member_from" className={styles.iconMember} />
+                          <IconWrapper icon_url={action.member_from.icon_url} size={28} />
                           <div>{action.member_from.name}</div>
                         </div>
                         <MdOutlineKeyboardDoubleArrowRight />
                         <div className={styles.member}>
-                          <img src={action.member_to.icon_url} alt="member_to" className={styles.iconMember} />
+                          <IconWrapper icon_url={action.member_to.icon_url} size={28} />
                           <div>{action.member_to.name}</div>
                         </div>
                       </div>
