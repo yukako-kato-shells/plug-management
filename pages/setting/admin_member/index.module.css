@@ -1,0 +1,95 @@
+.note {
+  font-size: 14px;
+  color: var(--color-memo);
+}
+
+.memberListArea {
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.memberList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: fit-content;
+}
+
+.adminMember {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 16px;
+}
+
+.adminMember > div {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 8px;
+}
+
+.editButton {
+  border-radius: 4px;
+  padding: 6px 16px;
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: bold;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap : 48px;
+}
+
+.deleteButton {
+  cursor: pointer;
+}
+
+.border {
+  border-bottom: 1px solid rgb(217, 217, 217);
+  height: 1px;
+}
+
+.nameArea {
+  width: 300px;
+}
+
+.activeArea {
+  width: 120px;
+  font-size: 14px;
+  color: var(--color-memo);
+}
+
+.admin {
+  text-align: center;
+  width: 80px;
+}
+
+.adminButtonOFF {
+  background-color: rgb(212, 212, 212);
+  border-radius: 20px;
+  padding: 6px 14px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.adminButtonON {
+  background-color: #6FB9B4;
+  border-radius: 20px;
+  padding: 6px 14px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
