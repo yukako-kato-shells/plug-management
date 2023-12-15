@@ -53,6 +53,13 @@ const LayoutSetting: React.FC<LayoutSettingProps> = (props) => {
             バリュー管理
           </Link>
           <Link
+            href="/setting/admin_member"
+            className={styles.menuLabel + " " + (selectedMenuName == "admin_user" ? styles.menuLabelSelected : "")}
+            onClick={() => onClick("admin_user")}
+          >
+            メンバー管理
+          </Link>
+          <Link
             href="/setting/plan"
             className={styles.menuLabel + " " + (selectedMenuName == "plan" ? styles.menuLabelSelected : "")}
             onClick={() => onClick("plan")}

@@ -24,6 +24,7 @@ const IconWrapper: React.FC<IconWrapperProps> = (props) => {
           border: '1px solid var(--based-border-color)',
           objectFit: 'cover',
           objectPosition: 'center',
+          backgroundColor: 'white',
         }} />
       }
     </>
