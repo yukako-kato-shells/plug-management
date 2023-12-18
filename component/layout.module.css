@@ -86,4 +86,12 @@
     width: 100px;
     height: 100px;
   }
+
+  .logoutButton {
+    font-size: 14px;
+    color: var(--color-link);
+    text-decoration: underline;
+    margin-right: 8px;
+    cursor: pointer;
+  }
 }

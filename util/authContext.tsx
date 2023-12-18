@@ -32,19 +32,9 @@ const AuthProvider = ({ children }: AuthProps) => {
   };
 
   useEffect(() => {
-    if (isUserReady && router.query) {
-      if (!currentUser) {
-        // TODO: base64の文字列をデコード
-        signInWithCustomToken(auth, String(router.query.t)).then((_) => {
-          toast.info("ログインしました");
-        }).catch((error: any) => {
-          toast.error("エラーが発生しました");
-        })
-      }
-    }
-
     // Firebase認証状態ををsubscribe(SignIn, SignOutで認証状態が変更されると呼び出される)
     onAuthStateChanged(auth, (user) => {
+      console.log(user ? "ログインしているよ" : "ログアウトしているよ");
       setCurrentUser(user);
       setIsUserReady(true);
     });

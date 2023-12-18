@@ -1,6 +1,6 @@
 export interface IReqGetCustomToken {
   user_id: string,
-  token: string,
+  plug: string,
 }
 
 export interface IResGetCustomToken {
