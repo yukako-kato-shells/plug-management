@@ -11,6 +11,9 @@ import { HiOutlineTrash } from "react-icons/hi";
 import CustomModal from './customModal';
 import ButtonDefault from './buttonDefault';
 import { toast } from "react-toastify";
+import { IReqDeleteValue } from '../interfaces/IDeleteValue';
+import { IReqUpdateValue } from '../interfaces/IUpdateValue';
+import { IReqCreateValue } from '../interfaces/ICreateValue';
 
 interface FormValueProps {
   value: IValue;
@@ -29,7 +32,11 @@ const FormValue: FC<FormValueProps> = (props) => {
     }
 
     if (props.value.uid == "") { // 新規作成の場合
-      createValue(props.value).then((res) => {
+      const body: IReqCreateValue = {
+        title: props.value.title,
+        detail: props.value.detail,
+      }
+      createValue(body).then((res) => {
         props.setValues(res.values);
         props.setValue(defaultIValue);
         props.setIsOpenForm(false);
@@ -38,7 +45,11 @@ const FormValue: FC<FormValueProps> = (props) => {
         // エラーハンドリング
       })
     } else { // 更新の場合
-      updateValue(props.value.uid, props.value).then((res) => {
+      const body: IReqUpdateValue = {
+        title: props.value.title,
+        detail: props.value.detail,
+      }
+      updateValue(body).then((res) => {
         props.setValues(res.values);
         props.setValue(defaultIValue);
         props.setIsOpenForm(false);
@@ -49,7 +60,10 @@ const FormValue: FC<FormValueProps> = (props) => {
   }
 
   const onDelete = () => {
-    deleteValue(props.value.uid).then((res) => {
+    const body: IReqDeleteValue = {
+      uid: props.value.uid,
+    }
+    deleteValue(body).then((res) => {
       props.setValues(res.values);
       setIsOpenDeleteModal(false);
     }).then((err) => {
