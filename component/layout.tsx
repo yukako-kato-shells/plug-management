@@ -8,6 +8,11 @@ import { getMember } from '../api/getMember';
 import { MdOutlineSpaceDashboard, MdPersonOutline, MdOutlineSettings } from "react-icons/md";
 import Link from 'next/link';
 import IconWrapper from './iconWrapper';
+import { signOut } from "firebase/auth";
+import auth from "../util/firebase";
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -39,7 +44,7 @@ const Layout:React.FC<LayoutProps> = (props) => {
 
   useEffect(() => {
     //if (isUserReady && currentUser) return;
-    
+
     // ログインしている場合のみ、ユーザー情報を取得する
     getMember().then((res: IResGetMember) => {
       setMember(res);
@@ -159,6 +164,24 @@ interface HeaderBarProps {
 }
 
 const HeaderBar: React.FC<HeaderBarProps> = (props) => {
+  const router = useRouter();
+
+  const logout = () => {
+    const result = window.confirm("ログアウトします。よろしいですか？")
+    if (result) {
+      signOut(auth)
+        .then(() => {
+          // ログアウト成功
+          router.replace('/');
+          toast.info("ログアウトしました");
+        })
+        .catch((error) => {
+          // ログアウト失敗
+          toast.error("ログアウトに失敗しました");
+        })
+    }
+  }
+
   return (
     <div className={styles.headerBar}>
       <div className={styles.workspace}>
@@ -166,6 +189,12 @@ const HeaderBar: React.FC<HeaderBarProps> = (props) => {
         <div>{props.member.workspace_name}</div>
       </div>
       <div className={styles.member}>
+        <div
+          className={styles.logoutButton}
+          onClick={() => logout()}
+        >
+          ログアウト
+        </div>
         <IconWrapper icon_url={props.member.icon_url} size={40} />
         <div>{props.member.name}</div>
       </div>
