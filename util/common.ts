@@ -18,3 +18,10 @@ export const validateEmail = (email: string) => {
   var regex = new RegExp(/^[A-Za-z0-9]{1}[A-Za-z0-9_.+-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/);
   return regex.test(email) ? true : false;
 }
+
+// Unicode文字列を表示させるためのエスケープ処理
+export function unescapeHTML(html: string) {
+  var escapeEl = document.createElement('div');
+  escapeEl.innerHTML = html;
+  return escapeEl.textContent;
+}

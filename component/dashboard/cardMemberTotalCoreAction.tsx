@@ -1,5 +1,4 @@
 import DashboardCard from "./card";
-import CustomAreaChart from "./areaChart";
 import styles from './cardMemberTotalCoreAction.module.css';
 
 interface CardMemberTotalCoreActionProps {

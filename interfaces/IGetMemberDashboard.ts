@@ -56,8 +56,10 @@ export interface IResGetMemberDashboardAction {
 }
 
 export interface IResGetMemberDashboardReaction {
-  title: string;
-  users: string[];
+  name: string;
+  is_custom: boolean;
+  unicode: string;
+  icon_url: string;
   count: number;
 }
 

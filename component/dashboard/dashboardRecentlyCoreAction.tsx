@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from './dashboardRecentlyCoreAction.module.css'
-import { convertDateFormat } from '../../util/common';
+import { convertDateFormat, unescapeHTML } from '../../util/common';
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import { IResGetDashboardRecentlyCoreAction } from '../../interfaces/IGetDashboard';
 import IconWrapper from '../iconWrapper';
@@ -54,7 +54,22 @@ const DashboardRecentlyCoreAction: React.FC<DashboardRecentlyCoreActionProps> = 
                   <div className={styles.detail}>
                     {action.detail}
                   </div>
-                  <div className={styles.actionNumber}>アクション数：{action.reaction_number}</div>
+                  <div className={styles.actionNumber}>
+                    <div>
+                      { action.reactions.map((reaction, index) => {
+                        return (
+                          <div key={index} className={styles.emoji}>
+                            {reaction.is_custom ?
+                              <><img src={reaction.icon_url} width={16} height={16} alt={reaction.name} /><div>：{reaction.count}</div></>
+                              :
+                              <>{unescapeHTML(reaction.unicode)}：{reaction.count}</>
+                            }
+                          </div>
+                        )}
+                      )}
+                    </div>
+                    <div>アクション数：{action.reactions.map(r => r.count).reduce((accumulator, currentValue) => accumulator + currentValue, 0)}</div>
+                  </div>
                 </div>
               </div>
             )
