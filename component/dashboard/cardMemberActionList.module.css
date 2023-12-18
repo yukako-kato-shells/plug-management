@@ -64,6 +64,11 @@
   -webkit-line-clamp: 1;
 }
 
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
 .memberArea {
   display: flex;
   align-items: center;
@@ -97,12 +102,9 @@
 .reactionArea {
   display: flex;
   justify-content: space-between;
-}
-
-.actionNumber {
-  font-size: 14px;
+  align-items: center;
   color: var(--color-memo);
-  text-align: right;
+  font-size: 14px;
 }
 
 .noActions {
@@ -112,4 +114,15 @@
   justify-content: center;
   color: var(--color-memo);
   font-size: 15px;
+}
+
+.emojiArea {
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.emoji {
+  font-size: 16px;
 }

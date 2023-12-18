@@ -88,6 +88,25 @@
 
 .actionNumber {
   font-size: 14px;
+  line-height: 16px;
   color: var(--color-memo);
-  text-align: right;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actionNumber > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 16px;
+  gap: 16px;
+}
+
+.emoji {
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
 }

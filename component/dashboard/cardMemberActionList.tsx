@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { IResGetMemberDashboardAction } from "../../interfaces/IGetMemberDashboard";
 import styles from './cardMemberActionList.module.css';
-import { convertDateFormat } from "../../util/common";
+import { convertDateFormat, unescapeHTML } from "../../util/common";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import IconWrapper from "../iconWrapper";
 
@@ -43,17 +43,24 @@ const CardMemberActionList: React.FC<CardMemberActionListProps> = (props) => {
                     }
                     <div className={styles.coreAction}>
                       {/* 送信者、受信者 */}
-                      <div className={styles.memberArea}>
-                        <div className={styles.member}>
-                          <IconWrapper icon_url={action.member_from.icon_url} size={28} />
-                          <div>{action.member_from.name}</div>
+                      <div className={styles.top}>
+                        <div className={styles.memberArea}>
+                          <div className={styles.member}>
+                            <IconWrapper icon_url={action.member_from.icon_url} size={28} />
+                            <div>{action.member_from.name}</div>
+                          </div>
+                          <MdOutlineKeyboardDoubleArrowRight />
+                          <div className={styles.member}>
+                            <IconWrapper icon_url={action.member_to.icon_url} size={28} />
+                            <div>{action.member_to.name}</div>
+                          </div>
                         </div>
-                        <MdOutlineKeyboardDoubleArrowRight />
-                        <div className={styles.member}>
-                          <IconWrapper icon_url={action.member_to.icon_url} size={28} />
-                          <div>{action.member_to.name}</div>
+                        {/* 日付 */}
+                        <div className={styles.datetime}>
+                          {convertDateFormat(action.created_at)}
                         </div>
                       </div>
+
                       {/* タイトル */}
                       <div className={styles.value}>
                         {action.value_title}
@@ -62,11 +69,20 @@ const CardMemberActionList: React.FC<CardMemberActionListProps> = (props) => {
                         {action.detail}
                       </div>
                       <div className={styles.reactionArea}>
-                        {/* 日付 */}
-                        <div className={styles.datetime}>
-                          {convertDateFormat(action.created_at)}
+                        <div>
+                          { action.reactions.map((reaction, index) => {
+                            return (
+                              <div key={index} className={styles.emojiArea}>
+                                {reaction.is_custom ?
+                                  <><img src={reaction.icon_url} width={16} height={16} alt={reaction.name} /><div>：{reaction.count}</div></>
+                                  :
+                                  <><div className={styles.emoji}>{unescapeHTML(reaction.unicode)}</div><div>：{reaction.count}</div></>
+                                }
+                              </div>
+                            )}
+                          )}
                         </div>
-                        <div className={styles.actionNumber}>
+                        <div>
                           アクション数：{action.reactions.map((reaction) => reaction.count)}
                         </div>
                       </div>

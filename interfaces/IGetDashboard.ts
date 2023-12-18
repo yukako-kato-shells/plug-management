@@ -35,7 +35,15 @@ export interface IResGetDashboardRecentlyCoreAction {
   value_title: string;
   detail: string;
   created_at: string;
-  reaction_number: number;
+  reactions: IResGetDashboardReaction[];
+}
+
+export interface IResGetDashboardReaction {
+  name: string;
+  is_custom: boolean;
+  unicode: string;
+  icon_url: string;
+  count: number;
 }
 
 export interface IResGetDashboardActionNumberEachMonth {
