@@ -29,26 +29,28 @@ export const MediaQueryProvider: React.FC<MediaQueryProviderProps> = (props) => 
 
 export const useBreakpoint = () => useContext(MediaQueryContext);
 
-export const MediaQuery = ({ children, breakpoints }) => {
+export const MediaQuery = (children: React.ReactNode, breakpoints: string[]) => {
   const { isXs, isSm, isMd, isLg, isXl } = useBreakpoint();
   const [currentWindowSize, setCurrentWindowSize] = useState('xs');
 
-  var current: string;
-  if (isXs) {
-    current = 'xs';
-  } else if (isSm) {
-    current = 'sm';
-  } else if (isMd) {
-    current = 'md';
-  } else if (isLg) {
-    current = 'lg';
-  } else if (isXl) {
-    current = 'xl';
+  const getCurrentBreakPoint = (): string => {
+    if (isXs) {
+      return 'xs';
+    } else if (isSm) {
+      return 'sm';
+    } else if (isMd) {
+      return 'md';
+    } else if (isLg) {
+      return 'lg';
+    } else if (isXl) {
+      return 'xl';
+    }
+    return ""
   }
 
   useEffect(() => {
-    setCurrentWindowSize(current);
-  }, [current])
+    setCurrentWindowSize(getCurrentBreakPoint());
+  }, [isXs, isSm, isMd, isLg, isXl])
 
 
   return (
