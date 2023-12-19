@@ -1,49 +1,97 @@
-.main {
-  display: flex;
-  justify-content: space-between;
+@media screen and (min-width: 1200px) {
+  .main {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dashboardArea {
+    width: calc(100vw - 80px - 400px);
+    height: calc(100vh - 60px);
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .titleArea {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 18px
+  }
+
+  .selectBoxArea {
+    display: flex;
+    justify-content: right;
+    gap: 32px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    /* gap: 32px; */
+  }
+
+  .cards {
+    height: calc(100vh - 60px - 24px * 2 - 32px - 32px - 40px);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .cards > div {
+    display: grid;
+    align-items: stretch;
+    justify-content: stretch;
+  }
 }
 
-.dashboardArea {
-  width: calc(100vw - 80px - 400px);
-  height: calc(100vh - 60px);
-  padding: 24px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+/* Tablet */
+@media screen and (min-width: 520px) and (max-width: 1199px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dashboardArea {
+    padding: 16px;
+  }
 }
 
-.titleArea {
-  display: flex;
-  justify-content: space-between;
-}
+/* Mobile */
+@media screen and (max-width: 519px) {
+  .dashboardArea {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 
-.title {
-  font-weight: bold;
-  font-size: 18px
-}
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 
-.selectBoxArea {
-  display: flex;
-  justify-content: right;
-  gap: 32px;
-}
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  /* gap: 32px; */
-}
+  .title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
 
-.firstFloor {
-  height: calc(100vh - 60px - 24px * 2 - 32px - 32px - 40px);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 32px;
-}
-
-.firstFloor > div {
-  display: grid;
-  align-items: stretch;
-  justify-content: stretch;
+  .selectBoxArea {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
 }

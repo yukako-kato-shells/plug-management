@@ -1,9 +1,35 @@
-.selectBox {
-  padding: 4px 12px;
-  border: none;
-  border-bottom: 1px solid gray;
-  font-size: 16px;
-  width: 240px;
-  height: 32px;
-  background: none;
+@media screen and (min-width: 1200px) {
+  .selectBox {
+    padding: 4px 12px;
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 16px;
+    width: 240px;
+    height: 32px;
+    background: none;
+  }
+}
+
+@media screen and (min-width: 520px) and (max-width: 1199px) {
+  .selectBox {
+    padding: 4px 12px;
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 16px;
+    width: 240px;
+    height: 32px;
+    background: none;
+  }
+}
+
+@media screen and (max-width: 519px) {
+  .selectBox {
+    padding: 4px 12px;
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 15px;
+    width: calc(50vw - 24px);
+    height: 32px;
+    background: none;
+  }
 }

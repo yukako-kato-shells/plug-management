@@ -18,10 +18,9 @@ const CustomAreaChart: FC<AreaChartProps> = (props) => {
       <AreaChart
         data={data}
         margin={{
+          right: 10,
+          left: 10,
           top: 10,
-          right: 30,
-          left: 0,
-          bottom: 0,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />

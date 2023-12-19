@@ -1,6 +1,5 @@
-import Link from "next/link";
 import DashboardCard from "./card";
-import styles from "./cardPenetrationRate.module.css";
+import styles from "./cardGraphCoreActionNumber.module.css";
 import CustomBarChart from "./barChart";
 import { IResGetDashboardActionNumberEachMonth, IResGetDashboardValue } from "../../interfaces/IGetDashboard";
 

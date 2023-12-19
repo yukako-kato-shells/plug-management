@@ -1,78 +1,243 @@
-.main {
-  position: relative;
+@media screen and (min-width: 1200px) {
+  .main {
+    position: relative;
+  }
+
+  .input {
+    border-bottom: 1px solid gray;
+    padding: 4px 12px;
+    width: 200px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .modal {
+    position: absolute;
+    top: 44px;
+    right: 0;
+    padding: 24px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 12.5px 0 rgba(0, 0, 0, .5);
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 2;
+  }
+
+  .modalContents {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .modalTitle {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .modalBody {
+    display: flex;
+    gap: 16px;
+  }
+
+  .modalFooter {
+    display: flex;
+    justify-content: right;
+  }
+
+  .modalFooterButton {
+    font-weight: bold;
+    width:fit-content;
+    color: white;
+    background-color: var(--color-primary);
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  .selectBox {
+    padding: 8px 16px;
+    border: 1px solid gray;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 120px;
+  }
 }
 
-.input {
-  border-bottom: 1px solid gray;
-  padding: 4px 12px;
-  width: 200px;
-  cursor: pointer;
+@media screen and (min-width: 520px) and (max-width: 1199px) {
+  .main {
+    position: relative;
+  }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  .input {
+    border-bottom: 1px solid gray;
+    padding: 4px 12px;
+    width: 200px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .modal {
+    position: absolute;
+    top: 44px;
+    right: 0;
+    padding: 24px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 12.5px 0 rgba(0, 0, 0, .5);
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 2;
+  }
+
+  .modalContents {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .modalTitle {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .modalBody {
+    display: flex;
+    gap: 16px;
+  }
+
+  .modalFooter {
+    display: flex;
+    justify-content: right;
+  }
+
+  .modalFooterButton {
+    font-weight: bold;
+    width:fit-content;
+    color: white;
+    background-color: var(--color-primary);
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  .selectBox {
+    padding: 8px 16px;
+    border: 1px solid gray;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 120px;
+  }
 }
 
-.overlay {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
+@media screen and (max-width: 519px) {
+  .main {
+    position: relative;
+    font-size: 15px;
+  }
 
-.modal {
-  position: absolute;
-  top: 44px;
-  right: 0;
-  padding: 24px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 5px 12.5px 0 rgba(0, 0, 0, .5);
+  .input {
+    border-bottom: 1px solid gray;
+    padding: 4px 10px;
+    width: calc(50vw - 24px);
+    cursor: pointer;
 
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  z-index: 2;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
 
-.modalContents {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+  .overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
 
-.modalTitle {
-  font-weight: bold;
-  font-size: 18px;
-}
+  .modal {
+    position: absolute;
+    top: 44px;
+    right: 0;
+    padding: 24px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 12.5px 0 rgba(0, 0, 0, .5);
 
-.modalBody {
-  display: flex;
-  gap: 16px;
-}
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 2;
+  }
 
-.modalFooter {
-  display: flex;
-  justify-content: right;
-}
+  .modalContents {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
-.modalFooterButton {
-  font-weight: bold;
-  width:fit-content;
-  color: white;
-  background-color: var(--color-primary);
-  border-radius: 6px;
-  padding: 6px 12px;
-  cursor: pointer;
-}
+  .modalTitle {
+    font-weight: bold;
+    font-size: 18px;
+  }
 
-.selectBox {
-  padding: 8px 16px;
-  border: 1px solid gray;
-  border-radius: 6px;
-  font-size: 16px;
-  width: 120px;
+  .modalBody {
+    display: flex;
+    gap: 16px;
+  }
+
+  .modalFooter {
+    display: flex;
+    justify-content: right;
+  }
+
+  .modalFooterButton {
+    font-weight: bold;
+    width:fit-content;
+    color: white;
+    background-color: var(--color-primary);
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  .selectBox {
+    padding: 8px 16px;
+    border: 1px solid gray;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 120px;
+  }
 }

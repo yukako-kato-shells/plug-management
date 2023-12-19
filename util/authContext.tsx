@@ -34,7 +34,6 @@ const AuthProvider = ({ children }: AuthProps) => {
   useEffect(() => {
     // Firebase認証状態ををsubscribe(SignIn, SignOutで認証状態が変更されると呼び出される)
     onAuthStateChanged(auth, (user) => {
-      console.log(user ? "ログインしているよ" : "ログアウトしているよ");
       setCurrentUser(user);
       setIsUserReady(true);
     });

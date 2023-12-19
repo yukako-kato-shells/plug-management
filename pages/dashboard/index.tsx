@@ -79,7 +79,7 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
           <div className={styles.content}>
-            <div className={styles.firstFloor}>
+            <div className={styles.cards}>
               <div style={{ gridRow: '1 / 2', gridColumn: '1 / 3' }}>
                 <CardPenetrationRate data={data.action_percentage_each_month} />
               </div>
