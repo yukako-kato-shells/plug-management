@@ -60,10 +60,9 @@ const CustomBarChart: FC<BarChartProps> = (props) => {
       <BarChart
         data={props.data}
         margin={{
-          top: 20,
-          right: 30,
-          left: 20,
-          bottom: 5,
+          right: 10,
+          left: 10,
+          top: 10,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
