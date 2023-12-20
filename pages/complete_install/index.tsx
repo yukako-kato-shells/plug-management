@@ -7,6 +7,7 @@ import auth from '../../util/firebase';
 import { useRouter } from "next/router";
 import { useAuth } from "../../util/authContext";
 import { toast } from "react-toastify";
+import { getValues } from "../../api/values/getValues";
 
 const CompleteInstall: React.FC = () => {
   const router = useRouter();
@@ -14,13 +15,20 @@ const CompleteInstall: React.FC = () => {
 
   useEffect(() => {
     if (!router.isReady || !router.query) return;
-    if (currentUser) {
-      router.push('/dashboard'); // TODO: Value登録が一件もされていない場合はとどまる
-    } else {
-      const customToken = atob(String(router.query.plug ? router.query.plug : ""));
-      if (customToken == "") return
 
-      signInWithCustomToken(auth, customToken).then((result) => {
+    if (currentUser) {
+      // ログインしていた場合
+      getValues().then((res) => {
+        if (res.values.length != 0) router.push('/dashboard');
+      }).catch((error) => {
+        return;
+      })
+    } else {
+      // 未ログインの場合
+      const customToken = atob(String(router.query.plug ? router.query.plug : ""));
+      if (customToken == "") router.push('/401');
+
+      signInWithCustomToken(auth, customToken).then((res) => {
         toast.info('ログインしました。');
       })
     }
