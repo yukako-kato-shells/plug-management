@@ -32,7 +32,7 @@ const Install: React.FC = () => {
           </div>
           <div className={styles.buttonArea}>
             <ButtonWithSlack
-              href="https://whole-lionfish-champion.ngrok-free.app/slack/install"
+              href={`${process.env.NEXT_PUBLIC_SLACK_APP_INSTALL_URL}`}
               title="インストールへすすむ"
               disabled={!checkedTerms || !checkedEmail}
             />
