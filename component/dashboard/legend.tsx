@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Value } from "../../pages/dashboard";
+import { FC } from 'react';
+import { Value } from '../../pages/dashboard';
 import styles from './legend.module.css';
 
 interface CustomLegendProps {

@@ -1,33 +1,29 @@
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { useRouter } from "next/router";
-import { BsFillPencilFill } from "react-icons/bs";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
-import Layout from "../../../component/layout";
-import LayoutSetting from "../../../component/layoutSetting";
-import { getMembersForSetting } from "../../../api/getMembersForSetting";
-import { useAuth } from "../../../util/authContext";
-import CustomButton from "../../../component/setting/customButton";
-import IconWrapper from "../../../component/iconWrapper";
-import { IResGetMemberForSetting } from "../../../interfaces/IGetAdminMembers";
 import styles from './index.module.css';
-import { update } from "lodash";
-import { updateMemberAdmin } from "../../../api/updateMemberAdmin";
-import { IReqUpdateMemberAdmin } from "../../../interfaces/IUpdateMemberAdmin";
+import { useAuth } from '../../../util/authContext';
+import { getMembersForSetting } from '../../../api/getMembersForSetting';
+import { updateMemberAdmin } from '../../../api/updateMemberAdmin';
+import { IResGetMemberForSetting } from '../../../interfaces/IGetAdminMembers';
+import { IReqUpdateMemberAdmin } from '../../../interfaces/IUpdateMemberAdmin';
+import Layout from '../../../component/layout';
+import LayoutSetting from '../../../component/layoutSetting';
+import IconWrapper from '../../../component/iconWrapper';
 
 const AdminUser: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useAuth();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [members, setMembers] = useState<IResGetMemberForSetting[]>([]);
-  const [editMode, setEditMode] = useState<boolean>(false);
 
   useEffect(() => {
-    //if (!router.isReady || !router.query || !currentUser) return;
+    if (!router.isReady || !router.query || !currentUser) return;
     getMembersForSetting().then((res) => {
       setMembers(res.members);
     }).catch(() => {
-      toast.error("メンバー情報の取得に失敗しました");
+      toast.error('メンバー情報の取得に失敗しました');
     })
   }, [currentUser, router.isReady, router.query])
 
@@ -38,16 +34,16 @@ const AdminUser: React.FC = () => {
     }
     updateMemberAdmin(body).then((res) => {
       setMembers(res.members);
-      toast.info("管理者権限の更新が完了しました");
+      toast.info('管理者権限の更新が完了しました');
     }).catch(() => {
-      toast.error("管理者権限の更新に失敗しました");
+      toast.error('管理者権限の更新に失敗しました');
     })
   }
 
   return (
     <Layout>
       <LayoutSetting
-        title="メンバー管理"
+        title='メンバー管理'
         isLoading={isLoading}
         setIsLoading={setIsLoading}
       >
@@ -68,12 +64,12 @@ const AdminUser: React.FC = () => {
                     <div>
                       <IconWrapper icon_url={member.icon_url} size={40} />
                       <div className={styles.nameArea}>{member.name}</div>
-                      <div className={styles.activeArea} style={{color: (member.is_active ? "inherit" : "var(--color-memo)")}}>
-                        {member.is_active ? "アクティブ" : "非アクティブ"}
+                      <div className={styles.activeArea} style={{color: (member.is_active ? 'inherit' : 'var(--color-memo)')}}>
+                        {member.is_active ? 'アクティブ' : '非アクティブ'}
                       </div>
                       <div className={styles.admin}>
                         { member.is_me ?
-                          "あなた"
+                          'あなた'
                           :
                           <div className={member.is_admin ? styles.adminButtonON : styles.adminButtonOFF} onClick={() => onChangeAdmin(member.uid, member.is_admin)}>管理者</div>
                         }

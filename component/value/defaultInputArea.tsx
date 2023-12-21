@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction } from "react";
-import ButtonDefault from "../buttonDefault"
+import { Dispatch, SetStateAction } from 'react';
+import ButtonDefault from '../buttonDefault'
 import styles from './defaultInputArea.module.css';
-import { IValue, defaultIValue } from "../../interfaces/IValue";
+import { IValue, defaultIValue } from '../../interfaces/IValue';
 
 interface DefaultInputAreaProps {
   setIsOpenForm: Dispatch<SetStateAction<boolean>>;
@@ -15,7 +15,7 @@ const DefaultInputArea: React.FC<DefaultInputAreaProps> = (props) => {
       <div className={styles.content}>
         <div>まだ入力していないバリューがある場合は</div>
         <ButtonDefault
-          text="バリューを追加する"
+          text='バリューを追加する'
           onClick={() => {
             props.setIsOpenForm(true);
             props.setValue(defaultIValue);
@@ -23,7 +23,7 @@ const DefaultInputArea: React.FC<DefaultInputAreaProps> = (props) => {
       </div>
       <div className={styles.content}>
         <div>バリューの入力が完了した/後で入力する場合は</div>
-        <ButtonDefault text="最後のステップへ進む" href="/channel" />
+        <ButtonDefault text='最後のステップへ進む' href='/channel' />
       </div>
     </div>
   )

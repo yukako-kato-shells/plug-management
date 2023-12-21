@@ -1,5 +1,5 @@
-import styles from "./transitionDiv.module.css";
-import { motion } from "framer-motion";
+import styles from './transitionDiv.module.css';
+import { motion } from 'framer-motion';
 
 interface TransitionDivProps {
   children: React.ReactNode;

@@ -14,9 +14,9 @@ export const HamburgerMenu: React.FC = (props) => {
       <nav className={styles.nav}>
         <div className={styles.inner}>
           <ul>
-            <li><a href="#">Text</a></li>
-            <li><a href="#">Text</a></li>
-            <li><a href="#">Text</a></li>
+            <li><a href='#'>Text</a></li>
+            <li><a href='#'>Text</a></li>
+            <li><a href='#'>Text</a></li>
           </ul>
         </div>
       </nav>
@@ -24,13 +24,13 @@ export const HamburgerMenu: React.FC = (props) => {
         <div
           className={
             styles.hamburgerMenu
-            + " "
-            + (isOpen ? styles.hamburgerMenuActive : "")
+            + ' '
+            + (isOpen ? styles.hamburgerMenuActive : '')
           }
           onClick={toggleMenu}>
-          <div className={styles.hamburgerMenuLine + " " + styles.lineTop}></div>
-          <div className={styles.hamburgerMenuLine + " " + styles.lineMiddle}></div>
-          <div className={styles.hamburgerMenuLine + " " + styles.lineBottom}></div>
+          <div className={styles.hamburgerMenuLine + ' ' + styles.lineTop}></div>
+          <div className={styles.hamburgerMenuLine + ' ' + styles.lineMiddle}></div>
+          <div className={styles.hamburgerMenuLine + ' ' + styles.lineBottom}></div>
         </div>
       </div>
     </>

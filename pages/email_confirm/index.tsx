@@ -1,13 +1,14 @@
-import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { BsFillExclamationCircleFill } from 'react-icons/bs';
 import { GiFallingStar } from 'react-icons/gi';
-import { IReqConfirmEmail } from '../interfaces/IConfirmEmail';
-import { confirmEmail } from '../api/confirmEmail';
-import styles from './email_confirm.module.css';
-import Layout from '../component/layout';
 import { toast } from 'react-toastify';
+
+import styles from './index.module.css';
+import { IReqConfirmEmail } from '../../interfaces/IConfirmEmail';
+import { confirmEmail } from '../../api/confirmEmail';
+import Layout from '../../component/layout';
 
 const EmailConfirm = () => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const EmailConfirm = () => {
         setTimeout(() => { router.push('/dashboard') }, 5000);
       }
     })
-  }, [])
+  }, [router])
 
   return (
     <Layout
@@ -69,7 +70,7 @@ const EmailConfirm = () => {
           </div>
         }
       </div>
-    </Layout >
+    </Layout>
   )
 }
 

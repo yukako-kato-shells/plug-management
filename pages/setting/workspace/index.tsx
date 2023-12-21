@@ -1,21 +1,25 @@
-import { useEffect, useState } from "react";
-import Layout from "../../../component/layout"
-import LayoutSetting from "../../../component/layoutSetting"
-import { getWorkspaceSetting } from "../../../api/getWorkspaceSetting";
-import styles from "./index.module.css";
-import { toast } from "react-toastify";
-import { updateBeginningMonthOfTerm } from "../../../api/updateBeginningMonthOfTerm";
-import { IReqUpdateBeginningMonthOfTerm } from "../../../interfaces/IUpdateBeginningMonthOfTerm";
-import { RxCross1 } from "react-icons/rx";
-import { BsFillPencilFill } from "react-icons/bs";
-import { IResGetWOrkspaceSettingChannel, defaultIResGetWorkspaceSetting, defaultIResGetWorkspaceSettingChannel } from "../../../interfaces/IGetWorkspaceSetting";
-import { IResGetWorkspaceSetting } from "../../../interfaces/IGetWorkspaceSetting";
-import { IReqUpdateNoticeChannel } from "../../../interfaces/IUpdateNoticeChannel";
-import { updateNoticeChannel } from "../../../api/updateNoticeChannel";
-import EditButton from "../../../component/setting/customButton";
+import { useEffect, useState } from 'react';
+import Layout from '../../../component/layout'
+import LayoutSetting from '../../../component/layoutSetting'
+import { getWorkspaceSetting } from '../../../api/getWorkspaceSetting';
+import styles from './index.module.css';
+import { toast } from 'react-toastify';
+import { updateBeginningMonthOfTerm } from '../../../api/updateBeginningMonthOfTerm';
+import { IReqUpdateBeginningMonthOfTerm } from '../../../interfaces/IUpdateBeginningMonthOfTerm';
+import { RxCross1 } from 'react-icons/rx';
+import { BsFillPencilFill } from 'react-icons/bs';
+import { IResGetWOrkspaceSettingChannel, defaultIResGetWorkspaceSetting, defaultIResGetWorkspaceSettingChannel } from '../../../interfaces/IGetWorkspaceSetting';
+import { IResGetWorkspaceSetting } from '../../../interfaces/IGetWorkspaceSetting';
+import { IReqUpdateNoticeChannel } from '../../../interfaces/IUpdateNoticeChannel';
+import { updateNoticeChannel } from '../../../api/updateNoticeChannel';
+import EditButton from '../../../component/setting/customButton';
 import _ from 'lodash';
+import { useRouter } from 'next/router';
+import { useAuth } from '../../../util/authContext';
 
 const SettingWorkspace: React.FC = () => {
+  const router = useRouter();
+  const { currentUser } = useAuth();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [data, setData] =useState<IResGetWorkspaceSetting>(defaultIResGetWorkspaceSetting);
   const [beginningMonthOfTerm, setBeginningMonthOfTerm] = useState<number>(1);
@@ -25,17 +29,17 @@ const SettingWorkspace: React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    if (!router.isReady || !router.query || !currentUser) return;
 
-    //if (!router.isReady || !router.query || !currentUser) return;
     getWorkspaceSetting().then((res) => {
       setData(res);
       setBeginningMonthOfTerm(res.beginning_month_of_term);
       setNoticeChannel(res.channels.filter(c => c.selected)[0]);
       setIsLoading(false);
     }).catch((err) => {
-      toast.error("ワークスペース設定の取得に失敗しました");
+      toast.error('ワークスペース設定の取得に失敗しました');
     })
-  }, [])
+  }, [currentUser, router.isReady, router.query])
 
   const onUpdateNoticeChannel = (slackUID: string) => {
     const body: IReqUpdateNoticeChannel = {
@@ -43,18 +47,18 @@ const SettingWorkspace: React.FC = () => {
     }
     updateNoticeChannel(body).then((res) => {
       if (res.result) {
-        toast.info("通知チャンネルの変更が完了しました");
+        toast.info('通知チャンネルの変更が完了しました');
         setIsEditingNoticeChannel(false);
         getWorkspaceSetting().then((r) => {
           setData(r);
           setBeginningMonthOfTerm(r.beginning_month_of_term);
           setNoticeChannel(r.channels.filter(c => c.selected)[0]);
         }).catch((err) => {
-          toast.error("ワークスペース設定の取得に失敗しました");
+          toast.error('ワークスペース設定の取得に失敗しました');
         })
       }
     }).catch((err) => {
-      toast.error("通知チャンネルの変更に失敗しました");
+      toast.error('通知チャンネルの変更に失敗しました');
     })
   }
 
@@ -66,17 +70,17 @@ const SettingWorkspace: React.FC = () => {
       if (res.result) {
         setBeginningMonthOfTerm(month);
         setIsEditingBeginningMonth(false);
-        toast.error("期初月の変更が完了しました");
+        toast.error('期初月の変更が完了しました');
       }
     }).catch((err) => {
-      toast.error("期初月の変更に失敗しました");
+      toast.error('期初月の変更に失敗しました');
     })
   }
 
   return (
     <Layout>
       <LayoutSetting
-        title="ワークスペース管理"
+        title='ワークスペース管理'
         isLoading={isLoading}
         setIsLoading={setIsLoading}
       >
@@ -87,7 +91,7 @@ const SettingWorkspace: React.FC = () => {
               { !isEditingNoticeChannel &&
                 <EditButton
                   iconType={BsFillPencilFill}
-                  title={"編集する"}
+                  title={'編集する'}
                   onClick={() => {
                     setIsEditingNoticeChannel(true)
                     setIsEditingBeginningMonth(false)
@@ -101,7 +105,7 @@ const SettingWorkspace: React.FC = () => {
               { isEditingNoticeChannel ?
                 <div className={styles.displayNoticeChannel}>
                   <select
-                    className={styles.selectNoticeChannel +  " " + styles.displayNoticeChannelName}
+                    className={styles.selectNoticeChannel +  ' ' + styles.displayNoticeChannelName}
                     value={data.channels.filter(c => c.selected)[0].slack_uid}
                     onChange={(e) => onUpdateNoticeChannel(e.target.value)}
                   >
@@ -135,7 +139,7 @@ const SettingWorkspace: React.FC = () => {
               { !isEditingBeginningMonth &&
                 <EditButton
                   iconType={BsFillPencilFill}
-                  title={"編集する"}
+                  title={'編集する'}
                   onClick={() => {
                     setIsEditingBeginningMonth(true)
                     setIsEditingNoticeChannel(false)

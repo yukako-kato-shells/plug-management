@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
-import { IResGetMemberDashboardAction } from "../../interfaces/IGetMemberDashboard";
+import { useState } from 'react';
+import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
+
 import styles from './cardMemberActionList.module.css';
-import { convertDateFormat, unescapeHTML } from "../../util/common";
-import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-import IconWrapper from "../iconWrapper";
+import { IResGetMemberDashboardAction } from '../../interfaces/IGetMemberDashboard';
+import { convertDateFormat, unescapeHTML } from '../../util/common';
+import IconWrapper from '../iconWrapper';
 
 interface CardMemberActionListProps {
   core_actions: IResGetMemberDashboardAction[];
@@ -11,31 +12,31 @@ interface CardMemberActionListProps {
 }
 
 const CardMemberActionList: React.FC<CardMemberActionListProps> = (props) => {
-  const [currentTab, setCurrentTab] = useState<string>("coreAction");
+  const [currentTab, setCurrentTab] = useState<string>('coreAction');
 
   return (
     <div className={styles.main}>
       <div className={styles.tabList}>
         <div
-          className={styles.tab + (currentTab == "coreAction" ? " " + styles.active : "") }
-          onClick={() => setCurrentTab("coreAction")}
+          className={styles.tab + (currentTab == 'coreAction' ? ' ' + styles.active : '') }
+          onClick={() => setCurrentTab('coreAction')}
         >
           コアアクション
         </div>
         <div
-          className={styles.tab + (currentTab == "supportAction" ? " " + styles.active : "")}
-          onClick={() => setCurrentTab("supportAction")}
+          className={styles.tab + (currentTab == 'supportAction' ? ' ' + styles.active : '')}
+          onClick={() => setCurrentTab('supportAction')}
         >
           サポートアクション
         </div>
       </div>
       <div className={styles.card}>
         {
-            ((currentTab == "coreAction" && props.core_actions.length == 0) || (currentTab == "supportAction" && props.support_actions.length == 0)) ?
+            ((currentTab == 'coreAction' && props.core_actions.length == 0) || (currentTab == 'supportAction' && props.support_actions.length == 0)) ?
             <div className={styles.noActions}>この期間にアクションはありません</div>
             :
             <>
-              {(currentTab == "coreAction" ? props.core_actions : props.support_actions).map((action, index) => {
+              {(currentTab == 'coreAction' ? props.core_actions : props.support_actions).map((action, index) => {
                 return (
                   <div key={index}>
                     { index != 0 &&

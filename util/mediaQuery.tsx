@@ -45,7 +45,7 @@ export const MediaQuery = (children: React.ReactNode, breakpoints: string[]) => 
     } else if (isXl) {
       return 'xl';
     }
-    return ""
+    return ''
   }
 
   useEffect(() => {

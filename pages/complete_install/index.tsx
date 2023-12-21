@@ -1,13 +1,14 @@
-import Link from "next/link";
 import React, { useEffect } from 'react';
-import LayoutRegistration from "../../component/layoutRegistration";
-import styles from './index.module.css';
-import { signInWithCustomToken } from 'firebase/auth';
-import auth from '../../util/firebase';
+import Link from "next/link";
 import { useRouter } from "next/router";
-import { useAuth } from "../../util/authContext";
+import { signInWithCustomToken } from 'firebase/auth';
 import { toast } from "react-toastify";
+
+import styles from './index.module.css';
+import auth from '../../util/firebase';
+import { useAuth } from "../../util/authContext";
 import { getValues } from "../../api/values/getValues";
+import LayoutRegistration from "../../component/layoutRegistration";
 
 const CompleteInstall: React.FC = () => {
   const router = useRouter();

@@ -1,4 +1,4 @@
-import DashboardCard from "./card";
+import DashboardCard from './card';
 import styles from './cardMemberTotalSupportAction.module.css';
 
 interface CardMemberTotalSupportActionProps {

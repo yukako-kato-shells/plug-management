@@ -56,7 +56,7 @@ interface BarChartProps {
 const CustomBarChart: FC<BarChartProps> = (props) => {
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width='100%' height='100%'>
       <BarChart
         data={props.data}
         margin={{
@@ -65,19 +65,19 @@ const CustomBarChart: FC<BarChartProps> = (props) => {
           top: 10,
         }}
       >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="month" fontSize="13px" />
+        <CartesianGrid strokeDasharray='3 3' />
+        <XAxis dataKey='month' fontSize='13px' />
         <Tooltip />
         {
           props.values.map((value: Value, index: number) => {
             return (
               <Bar
                 dataKey={value.uid}
-                name={value.title.length > 8 ? value.title.substring(0, 18).trim() + "..." : value.title}
-                stackId="a"
+                name={value.title.length > 8 ? value.title.substring(0, 18).trim() + '...' : value.title}
+                stackId='a'
                 fill={value.color}
                 key={index}
-                unit="回"
+                unit='回'
               />
             )
           })

@@ -1,7 +1,7 @@
-import { FC } from "react"
+import { FC } from 'react'
 import styles from './ranking.module.css';
-import { IResGetDashboardRanking } from "../../interfaces/IGetDashboard";
-import IconWrapper from "../iconWrapper";
+import { IResGetDashboardRanking } from '../../interfaces/IGetDashboard';
+import IconWrapper from '../iconWrapper';
 
 interface RankingProps {
   data: IResGetDashboardRanking;
@@ -15,7 +15,7 @@ const Ranking: FC<RankingProps> = (props) => {
         <div className={styles.topMember}>
           <div>
             <IconWrapper
-              icon_url={props.data.core_action_rank.length == 0 ? "" : props.data.core_action_rank[0].icon_url}
+              icon_url={props.data.core_action_rank.length == 0 ? '' : props.data.core_action_rank[0].icon_url}
               size={46}
             />
           </div>
@@ -27,7 +27,7 @@ const Ranking: FC<RankingProps> = (props) => {
               return (
                 <div className={styles.otherMember} key={index}>
                   <IconWrapper
-                    icon_url={props.data.core_action_rank[num] == null ? "" : props.data.core_action_rank[num].icon_url}
+                    icon_url={props.data.core_action_rank[num] == null ? '' : props.data.core_action_rank[num].icon_url}
                     size={36}
                   />
                 </div>
@@ -41,7 +41,7 @@ const Ranking: FC<RankingProps> = (props) => {
         <div className={styles.topMember}>
           <div>
             <IconWrapper
-              icon_url={props.data.support_action_rank.length == 0 ? "" : props.data.support_action_rank[0].icon_url}
+              icon_url={props.data.support_action_rank.length == 0 ? '' : props.data.support_action_rank[0].icon_url}
               size={46}
             />
           </div>
@@ -53,7 +53,7 @@ const Ranking: FC<RankingProps> = (props) => {
               return (
                 <div className={styles.otherMember} key={index}>
                   <IconWrapper
-                    icon_url={props.data.core_action_rank[num] == null ? "" : props.data.core_action_rank[num].icon_url}
+                    icon_url={props.data.core_action_rank[num] == null ? '' : props.data.core_action_rank[num].icon_url}
                     size={36}
                   />
                 </div>

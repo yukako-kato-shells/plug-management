@@ -1,19 +1,20 @@
 import { FC, SetStateAction, useState } from 'react';
-import styles from './formValue.module.css';
+import { toast } from 'react-toastify';
+import { HiOutlineTrash } from 'react-icons/hi';
 import _ from 'lodash';
+
+import styles from './formValue.module.css';
 import { TextLength } from './textLength';
 import { MAX_LENGTH_VALUE_DETAIL, MAX_LENGTH_VALUE_TITLE } from '../util/constant';
 import { IValue, defaultIValue } from '../interfaces/IValue';
 import { createValue } from '../api/values/createValue';
 import { updateValue } from '../api/values/updateValue';
 import { deleteValue } from '../api/values/deleteValue';
-import { HiOutlineTrash } from "react-icons/hi";
-import CustomModal from './customModal';
-import ButtonDefault from './buttonDefault';
-import { toast } from "react-toastify";
 import { IReqDeleteValue } from '../interfaces/IDeleteValue';
 import { IReqUpdateValue } from '../interfaces/IUpdateValue';
 import { IReqCreateValue } from '../interfaces/ICreateValue';
+import CustomModal from './customModal';
+import ButtonDefault from './buttonDefault';
 
 interface FormValueProps {
   value: IValue;
@@ -26,12 +27,12 @@ const FormValue: FC<FormValueProps> = (props) => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false);
 
   const onSave = () => {
-    if (props.value.title == "" || props.value.detail == "") {
-      toast.error("タイトルと概要を入力してください");
+    if (props.value.title == '' || props.value.detail == '') {
+      toast.error('タイトルと概要を入力してください');
       return;
     }
 
-    if (props.value.uid == "") { // 新規作成の場合
+    if (props.value.uid == '') { // 新規作成の場合
       const body: IReqCreateValue = {
         title: props.value.title,
         detail: props.value.detail,
@@ -76,10 +77,13 @@ const FormValue: FC<FormValueProps> = (props) => {
       <div>
         <div className={styles.label}>
           <div>タイトル</div>
-          <TextLength maxLength={MAX_LENGTH_VALUE_TITLE} text={props.value.title} />
+          <TextLength
+            maxLength={MAX_LENGTH_VALUE_TITLE}
+            text={props.value.title}
+          />
         </div>
         <input
-          placeholder="例）Be your self, Create new things"
+          placeholder='例）Be your self, Create new things'
           className={styles.titleInput}
           onChange={(e) => {
             const tmpEditValue = _.cloneDeep(props.value);
@@ -96,7 +100,7 @@ const FormValue: FC<FormValueProps> = (props) => {
           <TextLength maxLength={MAX_LENGTH_VALUE_DETAIL} text={props.value.detail} />
         </div>
         <textarea
-          placeholder="例）立場や役職関係なく、お互いを尊重しつつも、自分らしく、好きなことを言い合える場所を作ろう。"
+          placeholder='例）立場や役職関係なく、お互いを尊重しつつも、自分らしく、好きなことを言い合える場所を作ろう。'
           className={styles.detailInput}
           onChange={(e) => {
             const tmpEditValue = _.cloneDeep(props.value);
@@ -109,9 +113,9 @@ const FormValue: FC<FormValueProps> = (props) => {
         />
       </div>
       <div className={styles.submitButtonArea}>
-        <ButtonDefault onClick={onSave} text="保存する" />
+        <ButtonDefault onClick={onSave} text='保存する' />
       </div>
-      { props.value.uid != "" &&
+      { props.value.uid != '' &&
         <div className={styles.deleteButtonArea}>
           <div className={styles.deleteButton} onClick={() => setIsOpenDeleteModal(true)}>
             <HiOutlineTrash />
@@ -139,7 +143,7 @@ export const DeleteModal: FC<DeleteModalProps> = (props) => {
     <CustomModal
       isOpen={props.isOpen}
       setIsOpen={props.setIsOpen}
-      title="削除してよろしいですか？"
+      title='削除してよろしいですか？'
       closeable={true}
     >
       <div className={styles.deleteModalContent}>
@@ -148,7 +152,7 @@ export const DeleteModal: FC<DeleteModalProps> = (props) => {
           <br />
           ※すでに回答いただいたアンケート結果は引き続き閲覧することができます
         </div>
-        <ButtonDefault onClick={props.onDelete} text="削除する" />
+        <ButtonDefault onClick={props.onDelete} text='削除する' />
       </div>
     </CustomModal>
   )

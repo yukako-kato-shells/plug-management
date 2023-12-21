@@ -1,9 +1,10 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import 'firebase/auth';
-import AuthProvider from '../util/authContext';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import '../styles/globals.css'
+import AuthProvider from '../util/authContext';
 import { MediaQueryProvider } from '../util/mediaQuery';
 import MenuProvider from '../util/menuContext';
 
@@ -15,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <AuthProvider>
           <>
             <ToastContainer
-              position="top-right"
+              position='top-right'
               autoClose={5000}
               hideProgressBar={false}
               newestOnTop={false}
@@ -24,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
               pauseOnFocusLoss
               draggable
               pauseOnHover
-              theme="light"
+              theme='light'
             />
             <Component {...pageProps} />
           </>

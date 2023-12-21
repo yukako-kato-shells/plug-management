@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { Dispatch, SetStateAction } from "react";
-import { MdOutlineSettings, MdOutlineSpaceDashboard, MdPersonOutline } from "react-icons/md";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { Dispatch, SetStateAction } from 'react';
+import { MdOutlineSettings, MdOutlineSpaceDashboard, MdPersonOutline } from 'react-icons/md';
 import styles from './menuBar.module.css';
 
 interface MenuBarProps {
@@ -18,44 +18,44 @@ const MenuBar: React.FC<MenuBarProps> = (props) => {
     <div className={styles.main}>
       { props.isAdmin &&
         <Link
-          href="/dashboard"
-          className={styles.menuButton + " " + (props.selectedIconName == "dashboard" ? styles.menuButtonSelected : "")}
+          href='/dashboard'
+          className={styles.menuButton + ' ' + (props.selectedIconName == 'dashboard' ? styles.menuButtonSelected : '')}
           onClick={() => {
-            localStorage.setItem('selectedMenu', "dashboard");
-            props.setSelectedIconName("dashboard");
+            localStorage.setItem('selectedMenu', 'dashboard');
+            props.setSelectedIconName('dashboard');
           }}
         >
           <MdOutlineSpaceDashboard
             size={30}
-            color={props.selectedIconName == "dashboard" ? "#6FB9B4" : "white"}
+            color={props.selectedIconName == 'dashboard' ? '#6FB9B4' : 'white'}
           />
         </Link>
       }
       <Link
-        href={props.isAdmin ? "/members" : `/members/${props.memberUid}`}
-        className={styles.menuButton + " " + (props.selectedIconName == "member" ? styles.menuButtonSelected : "")}
+        href={props.isAdmin ? '/members' : `/members/${props.memberUid}`}
+        className={styles.menuButton + ' ' + (props.selectedIconName == 'member' ? styles.menuButtonSelected : '')}
         onClick={() => {
-          localStorage.setItem('selectedMenu', "member");
-          props.setSelectedIconName("member");
+          localStorage.setItem('selectedMenu', 'member');
+          props.setSelectedIconName('member');
         }}
       >
         <MdPersonOutline
           size={30}
-          color={props.selectedIconName == "member" ? "#6FB9B4" : "white"}
+          color={props.selectedIconName == 'member' ? '#6FB9B4' : 'white'}
         />
       </Link>
       { props.isAdmin &&
         <Link
-          href="/setting/mail"
-          className={styles.menuButton + " " + (props.selectedIconName == "setting" ? styles.menuButtonSelected : "")}
+          href='/setting/mail'
+          className={styles.menuButton + ' ' + (props.selectedIconName == 'setting' ? styles.menuButtonSelected : '')}
           onClick={() => {
-            localStorage.setItem('selectedMenu', "setting");
-            props.setSelectedIconName("setting");
+            localStorage.setItem('selectedMenu', 'setting');
+            props.setSelectedIconName('setting');
           }}
         >
           <MdOutlineSettings
             size={30}
-            color={props.selectedIconName == "setting" ? "#6FB9B4" : "white"}
+            color={props.selectedIconName == 'setting' ? '#6FB9B4' : 'white'}
           />
         </Link>
       }

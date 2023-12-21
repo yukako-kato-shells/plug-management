@@ -8,7 +8,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
   return (
     <label>
       <input
-        type="checkbox"
+        type='checkbox'
         checked={props.checked}
         onChange={props.handleChange}
       />

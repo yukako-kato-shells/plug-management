@@ -17,7 +17,7 @@ const UpgradePlanBilling: React.FC<UpgradePlanBillingProps> = (props) => {
     <div className={styles.main}>
       <div className={styles.title}>カード情報登録</div>
       <CustomModal
-        title={"ご確認ください"}
+        title={'ご確認ください'}
         isOpen={isOpenAlertModal}
         setIsOpen={setIsOpenAlertModal}
         closeable={true}

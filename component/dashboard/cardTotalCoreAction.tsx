@@ -1,8 +1,7 @@
-import DashboardCard from "./card";
-import styles from "./cardTotalCoreAction.module.css";
-import CustomPieChart from "./pieChart";
-import { IResGetDashboardTotalDetail, IResGetDashboardValue } from "../../interfaces/IGetDashboard";
-import { useEffect } from "react";
+import DashboardCard from './card';
+import styles from './cardTotalCoreAction.module.css';
+import CustomPieChart from './pieChart';
+import { IResGetDashboardTotalDetail, IResGetDashboardValue } from '../../interfaces/IGetDashboard';
 
 interface CardTotalCoreActionProps {
   total: IResGetDashboardTotalDetail[];

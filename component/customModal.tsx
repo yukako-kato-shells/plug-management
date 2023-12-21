@@ -50,7 +50,7 @@ const CustomModal = ({ children, isOpen, setIsOpen, title, closeable, onClose, m
                 {title &&
                   <div
                     className={styles.title + ' ' + (closeable ? '' : styles.textCenter)}
-                    style={{ width: closeable ? 'calc( 100% - 48px )' : "" }}
+                    style={{ width: closeable ? 'calc( 100% - 48px )' : '' }}
                   >
                     {title}
                   </div>

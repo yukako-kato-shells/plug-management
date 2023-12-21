@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import CheckBox from '../../component/checkbox';
+
 import styles from './index.module.css';
+import CheckBox from '../../component/checkbox';
 import ButtonWithSlack from '../../component/buttonWithSlack';
 import LayoutRegistration from '../../component/layoutRegistration';
 

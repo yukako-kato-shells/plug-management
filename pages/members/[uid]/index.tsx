@@ -1,51 +1,54 @@
-import { useEffect, useState } from "react";
-import styles from './index.module.css';
-import { useRouter } from "next/router";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
-import { useAuth } from "../../../util/authContext";
-import Layout from "../../../component/layout";
-import { getMemberDashboard } from "../../../api/getMemberDashboard";
-import { IReqGetMemberDashboard, IResGetMemberDashboard, IResGetMemberDashboardValueListDetail, defaultIResGetMemberDashboard } from "../../../interfaces/IGetMemberDashboard";
-import SelectValue from "../../../component/dashboard/selectValue";
-import InputPeriod from "../../../component/dashboard/inputPeriod";
-import CardMemberTotalCoreAction from "../../../component/dashboard/cardMemberTotalCoreAction";
-import CardMemberTotalSupportAction from "../../../component/dashboard/cardMemberTotalSupportAction";
-import CardMemberActionTransition from "../../../component/dashboard/cardMemberActionTransition";
-import CardMemberActionList from "../../../component/dashboard/cardMemberActionList";
-import IconWrapper from "../../../component/iconWrapper";
+import styles from './index.module.css';
+import { useAuth } from '../../../util/authContext';
+import { getMemberDashboard } from '../../../api/getMemberDashboard';
+import {
+  IReqGetMemberDashboard,
+  IResGetMemberDashboard,
+  IResGetMemberDashboardValueListDetail,
+  defaultIResGetMemberDashboard,
+} from '../../../interfaces/IGetMemberDashboard';
+import Layout from '../../../component/layout';
+import SelectValue from '../../../component/dashboard/selectValue';
+import InputPeriod from '../../../component/dashboard/inputPeriod';
+import CardMemberTotalCoreAction from '../../../component/dashboard/cardMemberTotalCoreAction';
+import CardMemberTotalSupportAction from '../../../component/dashboard/cardMemberTotalSupportAction';
+import CardMemberActionTransition from '../../../component/dashboard/cardMemberActionTransition';
+import CardMemberActionList from '../../../component/dashboard/cardMemberActionList';
+import IconWrapper from '../../../component/iconWrapper';
 
 const MemberDashboard: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useAuth();
   const [period, setPeriod] = useState<Period>({start_month: '', end_month: ''})
   const [values, setValues] = useState<IResGetMemberDashboardValueListDetail[]>([]);
-  const [valueUID, setValueUID] = useState<string>("");
+  const [valueUID, setValueUID] = useState<string>('');
   const [data, setData] = useState<IResGetMemberDashboard>(defaultIResGetMemberDashboard);
 
   useEffect(() => {
-    if (router.isReady && router.query) {
-      //if (currentUser) {
-        // 初回アクセスの場合は、`start_month`と`end_month`は空の状態で送信。
-        // その場合は、期初月から　12ヶ月を指定されたものとしてデータが返却される
-        const body: IReqGetMemberDashboard = {
-          start_month: String(router.query.start_month ? router.query.start_month : ""),
-          end_month: String(router.query.end_month ? router.query.end_month : ""),
-          value_uid: valueUID,
-        }
-        getMemberDashboard(body).then((res) => {
-          setData(res);
-          setPeriod(res.period);
+    if (!router.isReady || !router.query || !currentUser) return;
 
-          // valueのリストを作成
-          let tmpValues = res.values.map((value: IResGetMemberDashboardValueListDetail) => {
-            return { uid: value.uid, title: value.title }
-          })
-          tmpValues.unshift({uid: "", title: "全てのvalue"});
-          setValues(tmpValues);
-        })
-      //}
+    // 初回アクセスの場合は、`start_month`と`end_month`は空の状態で送信。
+    // その場合は、期初月から　12ヶ月を指定されたものとしてデータが返却される
+    const body: IReqGetMemberDashboard = {
+      start_month: String(router.query.start_month ? router.query.start_month : ''),
+      end_month: String(router.query.end_month ? router.query.end_month : ''),
+      value_uid: valueUID,
     }
-  }, [router.isReady, router.query, valueUID])
+    getMemberDashboard(body).then((res) => {
+      setData(res);
+      setPeriod(res.period);
+
+      // valueのリストを作成
+      let tmpValues = res.values.map((value: IResGetMemberDashboardValueListDetail) => {
+        return { uid: value.uid, title: value.title }
+      })
+      tmpValues.unshift({uid: '', title: '全てのvalue'});
+      setValues(tmpValues);
+    })
+  }, [currentUser, router.isReady, router.query, valueUID])
 
   return (
     <Layout>

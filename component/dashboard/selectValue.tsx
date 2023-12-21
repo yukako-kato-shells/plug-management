@@ -1,7 +1,6 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from 'react';
 import styles from './selectValue.module.css';
-import { Value } from "../../pages/dashboard";
-import { IResGetDashboardValueListDetail } from "../../interfaces/IGetDashboard";
+import { IResGetDashboardValueListDetail } from '../../interfaces/IGetDashboard';
 
 interface SelectValueProps {
   values: IResGetDashboardValueListDetail[];

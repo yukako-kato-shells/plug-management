@@ -10,7 +10,7 @@ interface LayoutSettingProps {
 }
 
 const LayoutSetting: React.FC<LayoutSettingProps> = (props) => {
-  const [selectedMenuName, setSelectedMenuName] = useState<string>("value");
+  const [selectedMenuName, setSelectedMenuName] = useState<string>('value');
 
   useEffect(() => {
     // メニューの現在位置をLocalStorageから取得
@@ -32,37 +32,37 @@ const LayoutSetting: React.FC<LayoutSettingProps> = (props) => {
       <div className={styles.contentsArea}>
         <div className={styles.menu}>
           <Link
-            href="/setting/workspace"
-            className={styles.menuLabel + " " + (selectedMenuName == "workspace" ? styles.menuLabelSelected : "")}
-            onClick={() => onClick("workspace")}
+            href='/setting/workspace'
+            className={styles.menuLabel + ' ' + (selectedMenuName == 'workspace' ? styles.menuLabelSelected : '')}
+            onClick={() => onClick('workspace')}
           >
             ワークスペース管理
           </Link>
           <Link
-            href="/setting/mail"
-            className={styles.menuLabel + " " + (selectedMenuName == "mail" ? styles.menuLabelSelected : "")}
-            onClick={() => onClick("mail")}
+            href='/setting/mail'
+            className={styles.menuLabel + ' ' + (selectedMenuName == 'mail' ? styles.menuLabelSelected : '')}
+            onClick={() => onClick('mail')}
           >
             メールアドレス管理
           </Link>
           <Link
-            href="/setting/value"
-            className={styles.menuLabel + " " + (selectedMenuName == "value" ? styles.menuLabelSelected : "")}
-            onClick={() => onClick("value")}
+            href='/setting/value'
+            className={styles.menuLabel + ' ' + (selectedMenuName == 'value' ? styles.menuLabelSelected : '')}
+            onClick={() => onClick('value')}
           >
             バリュー管理
           </Link>
           <Link
-            href="/setting/admin_member"
-            className={styles.menuLabel + " " + (selectedMenuName == "admin_user" ? styles.menuLabelSelected : "")}
-            onClick={() => onClick("admin_user")}
+            href='/setting/admin_member'
+            className={styles.menuLabel + ' ' + (selectedMenuName == 'admin_user' ? styles.menuLabelSelected : '')}
+            onClick={() => onClick('admin_user')}
           >
             メンバー管理
           </Link>
           <Link
-            href="/setting/plan"
-            className={styles.menuLabel + " " + (selectedMenuName == "plan" ? styles.menuLabelSelected : "")}
-            onClick={() => onClick("plan")}
+            href='/setting/plan'
+            className={styles.menuLabel + ' ' + (selectedMenuName == 'plan' ? styles.menuLabelSelected : '')}
+            onClick={() => onClick('plan')}
           >
             契約内容・プラン変更
           </Link>
@@ -73,7 +73,7 @@ const LayoutSetting: React.FC<LayoutSettingProps> = (props) => {
           }
           <div className={styles.contents}>
             { props.isLoading ?
-              <div className={styles.loading}><img src="/assets/animation_spinner.gif" width={100} height={100} /></div>
+              <div className={styles.loading}><img src='/assets/animation_spinner.gif' width={100} height={100} /></div>
               :
               props.children
             }
