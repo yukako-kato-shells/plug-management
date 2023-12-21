@@ -1,0 +1,47 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+.main > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.notes {
+  font-size: 14px;
+  color: var(--color-memo);
+  text-align: center;
+}
+
+.displayNoticeChannel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 19px;
+  font-weight: bold;
+  width: 300px;
+  height: 40px;
+}
+
+.selectNoticeChannel {
+  padding: 8px 16px;
+  border: 1px solid var(--color-memo);
+  border-radius: 6px;
+  background-color: white;
+  font-size: 18px;
+  width: 100%;
+}
