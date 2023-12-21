@@ -1,5 +1,5 @@
 import styles from './customButton.module.css';
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons';
 
 interface CustomButtonProps {
   onClick: () => void;

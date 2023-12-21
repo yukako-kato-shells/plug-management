@@ -1,7 +1,7 @@
-import Head from 'next/head'
+import Link from 'next/link'
+
 import styles from './index.module.css'
 import IconSlack from '../component/IconSlack'
-import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -9,15 +9,15 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.header}>
           <div>
-            <img src="/assets/logo-dummy.svg" className={styles.headerLogo} />
+            <img src='/assets/logo-dummy.svg' className={styles.headerLogo} />
             <div className={styles.links}>
-              <Link href="">Plugとは</Link>
-              <Link href="">メリット</Link>
-              <Link href="">利用料金</Link>
-              <Link href="">お問い合わせ</Link>
+              <Link href=''>Plugとは</Link>
+              <Link href=''>メリット</Link>
+              <Link href=''>利用料金</Link>
+              <Link href=''>お問い合わせ</Link>
             </div>
           </div>
-          <Link href="/login">
+          <Link href='/login'>
             <div className={styles.buttonSignIn}>
               サインイン
             </div>
@@ -25,12 +25,12 @@ export default function Home() {
         </div>
 
         <div className={styles.firstView}>
-          <img src="/assets/img_background.svg" className={styles.imageBackground} />
+          <img src='/assets/img_background.svg' className={styles.imageBackground} />
           <div className={styles.titleArea}>
             <div className={styles.title}>
               Valueの浸透が<br />組織を強くする
             </div>
-            <img src="/assets/logo-dummy.svg" className={styles.logo} />
+            <img src='/assets/logo-dummy.svg' className={styles.logo} />
 
             <div className={styles.grid}>
               <Link href='/install'>

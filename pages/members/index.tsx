@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
-import Layout from "../../component/layout";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { toast } from 'react-toastify';
+
 import styles from './index.module.css';
-import { useAuth } from "../../util/authContext";
-import { useRouter } from "next/router";
-import { getWorkspaceMembers } from "../../api/getMembers";
-import { IGetWorkspaceMembersMember } from "../../interfaces/IGetWorkspaceMembers";
-import Link from "next/link";
-import IconWrapper from "../../component/iconWrapper";
+import Layout from '../../component/layout';
+import IconWrapper from '../../component/iconWrapper';
+import { useAuth } from '../../util/authContext';
+import { getWorkspaceMembers } from '../../api/getMembers';
+import { IGetWorkspaceMembersMember } from '../../interfaces/IGetWorkspaceMembers';
 
 const Members: React.FC = () => {
   const router = useRouter();
@@ -14,14 +16,14 @@ const Members: React.FC = () => {
   const [members, setMembers] = useState<IGetWorkspaceMembersMember[]>([]);
 
   useEffect(() => {
-    if (router.isReady && router.query) {
-      //if (currentUser) {
-        getWorkspaceMembers().then((res) => {
-          setMembers(res.members);
-        })
-      //}
-    }
-  }, [])
+    if (!router.isReady || !router.query || !currentUser) return;
+
+    getWorkspaceMembers().then((res) => {
+      setMembers(res.members);
+    }).catch((err) => {
+      toast.error('メンバーの取得に失敗しました');
+    })
+  }, [currentUser, router.isReady, router.query])
 
   return (
     <Layout>

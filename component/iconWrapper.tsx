@@ -6,7 +6,7 @@ interface IconWrapperProps {
 const IconWrapper: React.FC<IconWrapperProps> = (props) => {
   return (
     <>
-    { props.icon_url == "" ?
+    { props.icon_url == '' ?
       <div style={{
         height: `${props.size}px`,
         width: `${props.size}px`,

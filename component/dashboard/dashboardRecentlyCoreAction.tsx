@@ -16,7 +16,7 @@ const DashboardRecentlyCoreAction: React.FC<DashboardRecentlyCoreActionProps> = 
       {/* title */}
       <div className={styles.titleArea}>
         <div className={styles.title}>直近のコアアクション</div>
-        <Link href=""><div className={styles.link}>もっと見る</div></Link>
+        <Link href=''><div className={styles.link}>もっと見る</div></Link>
       </div>
 
       {/* コアアクションのリスト */}

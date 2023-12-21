@@ -1,7 +1,7 @@
-import DashboardCard from "./card";
-import styles from "./cardPenetrationRate.module.css";
-import CustomAreaChart from "./areaChart";
-import { IResGetDashboardActionPercentageEachMonth } from "../../interfaces/IGetDashboard";
+import DashboardCard from './card';
+import styles from './cardPenetrationRate.module.css';
+import CustomAreaChart from './areaChart';
+import { IResGetDashboardActionPercentageEachMonth } from '../../interfaces/IGetDashboard';
 
 interface CardPenetrationRateProps {
   data: IResGetDashboardActionPercentageEachMonth[];

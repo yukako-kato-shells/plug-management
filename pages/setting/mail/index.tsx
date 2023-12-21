@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
-import Layout from "../../../component/layout";
-import LayoutSetting from "../../../component/layoutSetting";
-import { useAuth } from "../../../util/authContext";
-import { getAccountSetting } from "../../../api/getAccountSetting";
-import { useRouter } from "next/router";
-import styles from "./index.module.css";
-import { IResGetAccountSetting, defaultIResGetAccountSetting } from "../../../interfaces/IGetAccountSetting";
-import { toast } from "react-toastify";
-import ButtonDefault from "../../../component/buttonDefault";
-import { validateEmail } from "../../../util/common";
-import { updateEmailRequest } from "../../../api/updateEmailRequest";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
+
+import styles from './index.module.css';
+import { validateEmail } from '../../../util/common';
+import { useAuth } from '../../../util/authContext';
+import { getAccountSetting } from '../../../api/getAccountSetting';
+import { updateEmailRequest } from '../../../api/updateEmailRequest';
+import {
+  IResGetAccountSetting,
+  defaultIResGetAccountSetting,
+} from '../../../interfaces/IGetAccountSetting';
+import Layout from '../../../component/layout';
+import LayoutSetting from '../../../component/layoutSetting';
+import ButtonDefault from '../../../component/buttonDefault';
 
 const SettingMail: React.FC = () => {
   const router = useRouter();
@@ -21,16 +25,16 @@ const SettingMail: React.FC = () => {
   const [data, setData] = useState<IResGetAccountSetting>(defaultIResGetAccountSetting);
 
   useEffect(() => {
-    //if (!router.isReady || !router.query || !currentUser) return;
+    if (!router.isReady || !router.query || !currentUser) return;
     getAccountSetting().then((res) => {
       setData(res);
       setCurrentEmail(res.email);
       setNewEmail(res.email_waiting_change);
       setIsLoading(false);
     }).catch((err) => {
-      toast.error("アカウント設定の取得に失敗しました");
+      toast.error('アカウント設定の取得に失敗しました');
     })
-  }, [])
+  }, [currentUser, router.isReady, router.query])
 
   // メールアドレスのバリデーション
   const validateInputEmail = () => {
@@ -59,7 +63,7 @@ const SettingMail: React.FC = () => {
   return (
     <Layout>
       <LayoutSetting
-        title="メールアドレス管理"
+        title='メールアドレス管理'
         isLoading={isLoading}
         setIsLoading={setIsLoading}
       >
@@ -89,7 +93,7 @@ const SettingMail: React.FC = () => {
               </>
             }
             <div className={styles.formTitle}>
-              {currentEmail ? "変更したいメールアドレス" : "メールアドレス"}
+              {currentEmail ? '変更したいメールアドレス' : 'メールアドレス'}
             </div>
             <div className={styles.form}>
               <input
@@ -97,7 +101,7 @@ const SettingMail: React.FC = () => {
                 onChange={(e) => {
                   setInputEmail(e.target.value);
                 }}
-                title="メールアドレス"
+                title='メールアドレス'
                 name='email'
                 placeholder='example@example.com'
               />
@@ -108,16 +112,16 @@ const SettingMail: React.FC = () => {
               }
               <div className={styles.memo}>
                 {newEmail ?
-                  "確認メール内のリンクをクリックし、認証を完了させてください。メールが届かない場合は、正しいメールアドレスを入力し、もう一度変更を実行してください。"
+                  '確認メール内のリンクをクリックし、認証を完了させてください。メールが届かない場合は、正しいメールアドレスを入力し、もう一度変更を実行してください。'
                   :
-                  currentEmail ? "メールアドレスを変更すると確認メールが送信されます。メール内のURLをクリックすると変更完了です。" : "メールアドレスを登録すると確認メールが送信されます。メール内のURLをクリックすると変更完了です。"
+                  currentEmail ? 'メールアドレスを変更すると確認メールが送信されます。メール内のURLをクリックすると変更完了です。' : 'メールアドレスを登録すると確認メールが送信されます。メール内のURLをクリックすると変更完了です。'
                 }
               </div>
             </div>
           </div>
           <ButtonDefault
-            text={isLoading ? "送信中..." : "保存する"}
-            disabled={inputEmail == "" || !validateInputEmail()}
+            text={isLoading ? '送信中...' : '保存する'}
+            disabled={inputEmail == '' || !validateInputEmail()}
             onClick={onSubmit}
           />
         </div>

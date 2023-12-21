@@ -1,9 +1,9 @@
-import { IResGetMemberDashboardActionTransition } from "../../interfaces/IGetMemberDashboard";
-import DashboardCard from "./card";
+import { IResGetMemberDashboardActionTransition } from '../../interfaces/IGetMemberDashboard';
+import DashboardCard from './card';
 import styles from './cardMemberActionTransition.module.css';
-import { Bar, BarChart, CartesianGrid, Rectangle, ResponsiveContainer, Tooltip, XAxis } from "recharts";
-import CustomLegend from "./legend";
-import { Value } from "../../pages/dashboard";
+import { Bar, BarChart, CartesianGrid, Rectangle, ResponsiveContainer, Tooltip, XAxis } from 'recharts';
+import CustomLegend from './legend';
+import { Value } from '../../pages/dashboard';
 
 interface CardMemberActionTransitionProps {
   actionTransitions: IResGetMemberDashboardActionTransition[];
@@ -28,22 +28,22 @@ const CardMemberActionTransition: React.FC<CardMemberActionTransitionProps> = (p
                 bottom: 5,
               }}
             >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" fontSize="13px" />
+              <CartesianGrid strokeDasharray='3 3' />
+              <XAxis dataKey='month' fontSize='13px' />
               <Tooltip />
               <Bar
-                dataKey="core_action_number"
-                name="コアアクション"
-                fill="#8884d8"
-                activeBar={<Rectangle fill="pink" stroke="blue" />}
-                unit={"回"}
+                dataKey='core_action_number'
+                name='コアアクション'
+                fill='#8884d8'
+                activeBar={<Rectangle fill='pink' stroke='blue' />}
+                unit={'回'}
               />
               <Bar
-                dataKey="support_action_number"
-                name="サポートアクション"
-                fill="#82ca9d"
-                activeBar={<Rectangle fill="gold" stroke="purple" />}
-                unit={"回"}
+                dataKey='support_action_number'
+                name='サポートアクション'
+                fill='#82ca9d'
+                activeBar={<Rectangle fill='gold' stroke='purple' />}
+                unit={'回'}
               />
             </BarChart>
           </ResponsiveContainer>

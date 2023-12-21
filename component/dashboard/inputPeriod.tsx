@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styles from './inputPeriod.module.css';
-import { BiCalendar } from "react-icons/bi";
+import { BiCalendar } from 'react-icons/bi';
 
 interface InputPeriodProps {
   registeredMonth: string;
@@ -59,8 +59,8 @@ function getSelectMonthList(registeredMonth: string, beginningMonthOfTerm: numbe
 }
 
 function compareYearMonths(yearMonth1: string, yearMonth2: string): number {
-  const [year1, month1] = yearMonth1.split("-");
-  const [year2, month2] = yearMonth2.split("-");
+  const [year1, month1] = yearMonth1.split('-');
+  const [year2, month2] = yearMonth2.split('-');
 
   if (year1 === year2) {
     if (month1 === month2) {
@@ -74,7 +74,7 @@ function compareYearMonths(yearMonth1: string, yearMonth2: string): number {
 }
 
 const formatPeriod = (dateStr: string) => {
-  return dateStr.replace("-", "/")
+  return dateStr.replace('-', '/')
 }
 
 const InputPeriod: React.FC<InputPeriodProps> = (props) => {
@@ -82,7 +82,7 @@ const InputPeriod: React.FC<InputPeriodProps> = (props) => {
   const [tmpPeriod, setTmpPeriod] = useState<Period>({start_month: props.period.start_month, end_month: props.period.end_month})
 
   useEffect(() => {
-    setTmpPeriod(props.period)
+    setTmpPeriod(props.period);
   }, [props])
 
     // 期間が変更された場合
@@ -111,7 +111,7 @@ const InputPeriod: React.FC<InputPeriodProps> = (props) => {
   return (
     <div className={styles.main}>
       <div className={styles.input} onClick={() => setIsOpen(!isOpen)}>
-        <BiCalendar size={24} color={"gray"} />
+        <BiCalendar size={24} color={'gray'} />
         <div>{formatPeriod(props.period.start_month)} - {formatPeriod(props.period.end_month)}</div>
       </div>
       {isOpen && <div className={styles.overlay} onClick={() => setIsOpen(false)}></div>}

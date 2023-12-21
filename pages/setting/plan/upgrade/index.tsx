@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
-import Layout from "../../../../component/layout";
-import LayoutSetting from "../../../../component/layoutSetting";
-import { useAuth } from "../../../../util/authContext";
-import { useRouter } from "next/router";
-import { getPlanUpgrade } from "../../../../api/getPlanUpgrade";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+
 import styles from './index.module.css';
-import { IResGetPlanUpgrade, defaultIResGetPlanUpgrade } from "../../../../interfaces/IGetPlanUpgrade";
-import UpgradePlanDetail from "../../../../component/plan/planDetail";
-import UpgradePlanBilling from "../../../../component/plan/billing";
+import { useAuth } from '../../../../util/authContext';
+import { getPlanUpgrade } from '../../../../api/getPlanUpgrade';
+import {
+  IResGetPlanUpgrade,
+  defaultIResGetPlanUpgrade,
+} from '../../../../interfaces/IGetPlanUpgrade';
+import Layout from '../../../../component/layout';
+import LayoutSetting from '../../../../component/layoutSetting';
+import UpgradePlanDetail from '../../../../component/plan/planDetail';
+import UpgradePlanBilling from '../../../../component/plan/billing';
 
 const Upgrade: React.FC = () => {
   const router = useRouter();
@@ -18,23 +22,20 @@ const Upgrade: React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    if (!router.isReady || !router.query || !currentUser) return;
 
-    if (router.isReady && router.query) {
-      // if (currentUser) {
-        getPlanUpgrade().then((res) => {
-          setData(res);
-          setIsLoading(false);
-        }).catch((err) => {
-          setIsLoading(false);
-        })
-      // }
-    }
+    getPlanUpgrade().then((res) => {
+      setData(res);
+      setIsLoading(false);
+    }).catch((err) => {
+      setIsLoading(false);
+    })
   }, [currentUser, router.isReady, router.query])
 
   return (
     <Layout>
       <LayoutSetting
-        title="プランをアップグレード"
+        title='プランをアップグレード'
         isLoading={isLoading}
         setIsLoading={setIsLoading}
       >

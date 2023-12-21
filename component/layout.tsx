@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import { useAuth } from "../util/authContext";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useAuth } from '../util/authContext';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import styles from './layout.module.css';
 import { IResGetMember, defaultIResGetMember } from '../interfaces/IGetMember';
 import { getMember } from '../api/getMember';
@@ -18,7 +18,7 @@ interface LayoutProps {
 const Layout:React.FC<LayoutProps> = (props) => {
   const { currentUser, isUserReady } = useAuth();
   const router = useRouter();
-  const [selectedIconName, setSelectedIconName] = useState<string>("dashboard");
+  const [selectedIconName, setSelectedIconName] = useState<string>('dashboard');
   const [member, setMember] = useState<IResGetMember>(defaultIResGetMember);
   const [finishedGetMember, setFinishedGetMember] = useState<boolean>(false);
   const { isMobile } = useDisplaySize();
@@ -39,7 +39,7 @@ const Layout:React.FC<LayoutProps> = (props) => {
   }, [])
 
   useEffect(() => {
-    if (isUserReady && currentUser) return;
+    if (!isUserReady || !currentUser) return;
 
     // ログインしている場合のみ、ユーザー情報を取得する
     getMember().then((res: IResGetMember) => {

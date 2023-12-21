@@ -58,14 +58,13 @@ const CardRegistrationForm: React.FC<CardRegistrationFormProps> = (props) => {
   const [secret, setSecret] = useState<string>('');
 
   useEffect(() => {
-    // TODO:戻す
-    //if (currentUser && isUserReady) {
-      getSetupIntentClientSecret().then((res) => {
-        setSecret(res.client_secret);
-      });
-      props.setIsSuccess(false);
-    //}
-  }, [])
+    if (!isUserReady || !currentUser) return;
+
+    getSetupIntentClientSecret().then((res) => {
+      setSecret(res.client_secret);
+    });
+    props.setIsSuccess(false);
+  }, [currentUser, isUserReady, props])
 
   const handleSubmit = async () => {
     if (!stripe || !elements) { return };

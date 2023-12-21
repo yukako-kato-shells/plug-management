@@ -9,12 +9,12 @@ const CustomAreaChart: FC<AreaChartProps> = (props) => {
   const [data, setData] = React.useState(props.data);
 
   useEffect(() => {
-    props.data.unshift({ month: "", total: 0 })
+    props.data.unshift({ month: '', total: 0 })
     setData(props.data)
   }, [props.data])
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width='100%' height='100%'>
       <AreaChart
         data={data}
         margin={{
@@ -23,29 +23,29 @@ const CustomAreaChart: FC<AreaChartProps> = (props) => {
           top: 10,
         }}
       >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="month" fontSize={"13px"} />
-        <YAxis dataKey="total" fontSize={"13px"} domain={[0, 100]} hide />
+        <CartesianGrid strokeDasharray='3 3' />
+        <XAxis dataKey='month' fontSize={'13px'} />
+        <YAxis dataKey='total' fontSize={'13px'} domain={[0, 100]} hide />
         <Tooltip />
         <defs>
           <linearGradient
-            id="gradationColor"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="100%"
+            id='gradationColor'
+            x1='0%'
+            y1='0%'
+            x2='100%'
+            y2='100%'
           >
-            <stop offset="0%" stopColor="#6FB9B4" />
-            <stop offset="100%" stopColor="#FFED93" />
+            <stop offset='0%' stopColor='#6FB9B4' />
+            <stop offset='100%' stopColor='#FFED93' />
           </linearGradient>
         </defs>
         <Area
-          type="monotone"
-          dataKey="total"
-          stroke="#6FB9B4"
-          fill="url(#gradationColor)"
+          type='monotone'
+          dataKey='total'
+          stroke='#6FB9B4'
+          fill='url(#gradationColor)'
           fillOpacity={0.8}
-          unit="%"
+          unit='%'
         />
       </AreaChart>
     </ResponsiveContainer>

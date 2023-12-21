@@ -59,7 +59,7 @@ const UpgradePlanDetail: React.FC<UpgradePlanDetailProps> = (props) => {
       {/* ボタン */}
       <div className={styles.buttonArea}>
         <ButtonDefault
-          text={"支払い方法の追加へすすむ"}
+          text={'支払い方法の追加へすすむ'}
           onClick={() => {props.setIsProcessing(true)}}
         />
       </div>

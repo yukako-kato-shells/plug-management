@@ -2,7 +2,7 @@ import { onAuthStateChanged, signInWithCustomToken, signOut, User } from 'fireba
 import { useRouter } from 'next/router';
 import { createContext, useEffect, useState, useContext } from 'react';
 import auth from './firebase';
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
 type FirebaseUserType = User | null;
 

@@ -30,7 +30,7 @@ export async function middleware(req: NextRequest) {
         headers: {
           'WWW-Authenticate': 'Basic realm="Auth Requred"'
           },
-        });  
+        });
     }
 
     return NextResponse.next()

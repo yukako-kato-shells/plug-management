@@ -1,8 +1,8 @@
-import { FC, useState } from "react";
-import { Cell, Pie, PieChart, ResponsiveContainer, Sector, Tooltip } from "recharts";
-import { PieSectorDataItem } from "recharts/types/polar/Pie";
-import { ActiveShape } from "recharts/types/util/types";
-import { IResGetDashboardTotalDetail, IResGetDashboardValue } from "../../interfaces/IGetDashboard";
+import { FC, useState } from 'react';
+import { Cell, Pie, PieChart, ResponsiveContainer, Sector, Tooltip } from 'recharts';
+import { PieSectorDataItem } from 'recharts/types/polar/Pie';
+import { ActiveShape } from 'recharts/types/util/types';
+import { IResGetDashboardTotalDetail, IResGetDashboardValue } from '../../interfaces/IGetDashboard';
 
 const renderActiveShape: ActiveShape<PieSectorDataItem> = (props: PieSectorDataItem) => {
   const RADIAN = Math.PI / 180;
@@ -37,10 +37,10 @@ const renderActiveShape: ActiveShape<PieSectorDataItem> = (props: PieSectorDataI
         outerRadius={(outerRadius ? outerRadius : 0) + 10}
         fill={fill}
       />
-      {/* <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" /> */}
-      {/* <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" /> */}
-      <text x={ex} y={ey} textAnchor={textAnchor} fill="#333" fontWeight={'bold'} fontSize={'20px'}>{`${value}`}</text>
-      <text x={ex} y={ey} dy={18} textAnchor={textAnchor} fill="#999" fontSize={12}>
+      {/* <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill='none' /> */}
+      {/* <circle cx={ex} cy={ey} r={2} fill={fill} stroke='none' /> */}
+      <text x={ex} y={ey} textAnchor={textAnchor} fill='#333' fontWeight={'bold'} fontSize={'20px'}>{`${value}`}</text>
+      <text x={ex} y={ey} dy={18} textAnchor={textAnchor} fill='#999' fontSize={12}>
         {`（${((percent ? percent : 0) * 100).toFixed(2)}%）`}
       </text>
     </g>
@@ -59,19 +59,19 @@ const CustomPieChart: FC<CustomPieChartProps> = (props) => {
   };
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width='100%' height='100%'>
       <PieChart>
         <Tooltip />
         <Pie
           activeIndex={activeIndex}
           activeShape={renderActiveShape}
           data={props.data}
-          cx="60%"
-          cy="50%"
+          cx='60%'
+          cy='50%'
           innerRadius={50}
           outerRadius={80}
-          fill="#8884d8"
-          dataKey="number"
+          fill='#8884d8'
+          dataKey='number'
           onMouseEnter={onPieEnter}
         >
         {props.data.map((entry, index) => (

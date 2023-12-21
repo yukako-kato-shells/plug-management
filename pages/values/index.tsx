@@ -1,30 +1,39 @@
-import { FC, useEffect, useState } from "react"
-import LayoutRegistration from "../../component/layoutRegistration";
-import styles from './index.module.css';
-import { getValues } from "../../api/values/getValues";
-import { IValue, defaultIValue } from "../../interfaces/IValue";
-import { BsFillPencilFill } from "react-icons/bs";
-import { IoCloseSharp } from "react-icons/io5";
+import { FC, useEffect, useState } from 'react'
+import { useRouter } from 'next/router';
+import { BsFillPencilFill } from 'react-icons/bs';
+import { IoCloseSharp } from 'react-icons/io5';
+import { toast } from 'react-toastify';
 import _ from 'lodash';
-import FormValue from "../../component/formValue";
-import DefaultInputArea from "../../component/value/defaultInputArea";
-import { MAX_COUNT_VALUES } from "../../util/constant";
-import { useRouter } from "next/router";
-import { useAuth } from "../../util/authContext";
+
+import styles from './index.module.css';
+import { MAX_COUNT_VALUES } from '../../util/constant';
+import { useAuth } from '../../util/authContext';
+import { getValues } from '../../api/values/getValues';
+import { IValue, defaultIValue } from '../../interfaces/IValue';
+import FormValue from '../../component/formValue';
+import LayoutRegistration from '../../component/layoutRegistration';
+import DefaultInputArea from '../../component/value/defaultInputArea';
+
 
 const InputValues: FC = () =>{
+  const router = useRouter();
+  const { currentUser } = useAuth();
   const [values, setValues] = useState<IValue[]>([]);
   const [isOpenForm, setIsOpenForm] = useState<boolean>(false);
   const [editValue, setEditValue] = useState<IValue>(defaultIValue);
 
   useEffect(() => {
+    if (!router.isReady || !router.query || !currentUser) return;
+
     getValues().then((res) => {
       setValues(res.values);
       if (res.values.length == 0) {
         setIsOpenForm(true);
       }
+    }).catch((err) => {
+      toast.error('バリューの取得に失敗しました');
     })
-  }, [])
+  }, [currentUser, router.isReady, router.query])
 
   return (
     <LayoutRegistration>
@@ -66,9 +75,9 @@ const InputValues: FC = () =>{
           { isOpenForm ?
             <div className={styles.inputForm}>
               <div className={styles.inputAreaTitle}>
-                <div>{editValue.uid ? "バリューを更新する" : "新しいバリューを追加する"}</div>
+                <div>{editValue.uid ? 'バリューを更新する' : '新しいバリューを追加する'}</div>
                 { values.length == 0 ?
-                  ""
+                  ''
                   :
                   <div onClick={() => setIsOpenForm(false)}>
                     <IoCloseSharp size={32} />

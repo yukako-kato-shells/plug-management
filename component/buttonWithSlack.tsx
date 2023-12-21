@@ -1,4 +1,4 @@
-import IconSlack from "./IconSlack";
+import IconSlack from './IconSlack';
 import styles from './buttonWithSlack.module.css';
 
 interface ButtonWithSlackProps {

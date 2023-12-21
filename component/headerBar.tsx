@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { IResGetMember } from '../interfaces/IGetMember';
 import styles from './headerBar.module.css';
 import { signOut } from 'firebase/auth';
-import auth from "../util/firebase";
+import auth from '../util/firebase';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,17 +19,17 @@ const HeaderBar: React.FC<HeaderBarProps> = (props) => {
   const { isMobile } = useDisplaySize();
  
   const logout = () => {
-    const result = window.confirm("ログアウトします。よろしいですか？")
+    const result = window.confirm('ログアウトします。よろしいですか？')
     if (result) {
       signOut(auth)
         .then(() => {
           // ログアウト成功
           router.replace('/');
-          toast.info("ログアウトしました");
+          toast.info('ログアウトしました');
         })
         .catch((error) => {
           // ログアウト失敗
-          toast.error("ログアウトに失敗しました");
+          toast.error('ログアウトに失敗しました');
         })
     }
   }
@@ -37,7 +37,7 @@ const HeaderBar: React.FC<HeaderBarProps> = (props) => {
   return (
     <div className={styles.headerBar}>
       { isMobile ?
-        <img src={"/assets/logo-dummy.svg"} width={80} height={30} />
+        <img src={'/assets/logo-dummy.svg'} width={80} height={30} />
         :
         <div className={styles.workspace}>
           <IconWrapper icon_url={props.member.workspace_icon_url} size={40} />
