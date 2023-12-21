@@ -69,7 +69,7 @@ const Values: React.FC = () => {
       deleteValue(body).then((res) => {
         let cloneData = _.cloneDeep(data);
         cloneData.values = res.values;
-        setData(cloneData);
+        setData(cloneData)
         toast.info('バリューの削除が完了しました');
       }).catch((err) => {
         toast.error('バリューの削除に失敗しました');
@@ -125,7 +125,7 @@ const Values: React.FC = () => {
                           <CustomButton
                             iconType={HiOutlineTrash}
                             title={'削除する'}
-                            onClick={() => onDelete()}
+                            onClick={() => onDelete}
                           />
                           :
                           <div></div>

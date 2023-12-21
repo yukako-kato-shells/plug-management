@@ -12,14 +12,14 @@
 .detailArea {
   background-color: #ECFAF9;
   position: relative;
-  padding: 100px 52px;
+  padding: 100px 70px 20px 70px;
   display: flex;
   flex-direction: column;
   gap: 60px;
 }
 
 .detailTitle {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: bold;
 }
 
@@ -27,6 +27,16 @@
   display: flex;
   flex-direction: column;
   gap: 52px;
+  overflow: auto;
+  /*IE(Internet Explorer)・Microsoft Edgeへの対応*/
+  -ms-overflow-style: none;
+  /*Firefoxへの対応*/
+  scrollbar-width: none;
+}
+
+ /*Google Chrome、Safariへの対応*/
+ .detail::-webkit-scrollbar{
+  display: none;
 }
 
 .editIcon {
@@ -35,6 +45,20 @@
 
 .inputArea {
   padding: 100px 52px;
+}
+
+.loadingWindow {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.loadingWindow img {
+  width: 100px;
+  height: 100px;
 }
 
 .inputForm {
@@ -60,7 +84,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
 }
 

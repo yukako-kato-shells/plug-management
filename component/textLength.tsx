@@ -13,7 +13,7 @@ export const TextLength: React.FC<TextLengthProps> = (props) => {
 
   return (
     <div className={styles.textLength + ' ' + (props.text.length == props.maxLength && styles.maxTextLength)}>
-      {props.text.length}/{props.maxLength}{locale == 'ja' ? '文字' : 'char'}
+      {props.text.length}/{props.maxLength}文字
     </div>
   )
 }
