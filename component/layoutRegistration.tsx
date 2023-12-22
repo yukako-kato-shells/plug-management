@@ -4,6 +4,7 @@ import styles from './layoutRegistration.module.css';
 interface LayoutRegistrationProps {
   children: React.ReactNode;
   monotone?: boolean;
+  isLoading?: boolean;
 }
 
 const LayoutRegistration: FC<LayoutRegistrationProps> = (props) => {
@@ -13,7 +14,11 @@ const LayoutRegistration: FC<LayoutRegistrationProps> = (props) => {
         src='/assets/img_background.svg'
         className={styles.imageBackground + (props.monotone ? " " + styles.monotone : "")}
       />
-      {props.children}
+      { props.isLoading ?
+        <img src='/assets/animation_spinner.gif' />
+        :
+        props.children
+      }
     </div>
   )
 }

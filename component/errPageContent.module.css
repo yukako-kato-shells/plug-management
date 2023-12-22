@@ -1,0 +1,76 @@
+/* Desktop・Tablet */
+@media screen and (min-width: 520px) {
+  .wrapper {
+    width: 63vw;
+    margin: 0 auto;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .errCode {
+    font-size: 120px;
+    color: rgb(165, 165, 165);
+    font-weight: bold;
+  }
+
+  .wrapper img {
+    width: 120px;
+    filter: grayscale(0.7);
+    margin: 16px 0;
+  }
+
+  .buttonArea {
+    margin: 24px 0px;
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 520px) and (max-width: 959px) {
+.wrapper {
+  width: 90vw;
+  height: calc(100vh - 240px);
+  padding-top: 0px;
+}
+
+.errCode {
+  font-size: 100px;
+}
+
+.wrapper img {
+  width: 100px;
+  filter: grayscale(0.7);
+  margin: 8px 0;
+}
+}
+
+/* Mobile */
+@media screen and (max-width: 519px) {
+  .wrapper {
+      padding: 24px;
+      text-align: center;
+      font-size: 14px;
+  }
+
+  .errCode {
+      font-size: 80px;
+      color: rgb(165, 165, 165);
+      font-weight: bold;
+  }
+
+  .wrapper h1 {
+      font-size: 22px;
+      margin-top: 8px;
+  }
+
+  .wrapper img {
+      width: 100px;
+      filter: grayscale(0.7);
+  }
+
+  .buttonArea {
+      margin: 24px 0px;
+  }
+}
