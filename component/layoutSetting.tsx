@@ -53,9 +53,9 @@ const LayoutSetting: React.FC<LayoutSettingProps> = (props) => {
             バリュー管理
           </Link>
           <Link
-            href='/setting/admin_member'
-            className={styles.menuLabel + ' ' + (selectedMenuName == 'admin_user' ? styles.menuLabelSelected : '')}
-            onClick={() => onClick('admin_user')}
+            href='/setting/member'
+            className={styles.menuLabel + ' ' + (selectedMenuName == 'member' ? styles.menuLabelSelected : '')}
+            onClick={() => onClick('member')}
           >
             メンバー管理
           </Link>

@@ -21,7 +21,7 @@ import { CustomButton } from '../../../component/setting/customButton';
 import ButtonDefault from '../../../component/buttonDefault';
 import LayoutSetting from '../../../component/layoutSetting';
 
-const Values: React.FC = () => {
+const SettingValues: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useAuth();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -183,4 +183,4 @@ const Values: React.FC = () => {
   )
 }
 
-export default Values;
+export default SettingValues;

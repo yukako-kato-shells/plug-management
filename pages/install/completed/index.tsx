@@ -5,12 +5,12 @@ import { signInWithCustomToken } from 'firebase/auth';
 import { toast } from 'react-toastify';
 
 import styles from './index.module.css';
-import auth from '../../util/firebase';
-import { useAuth } from '../../util/authContext';
-import { getValues } from '../../api/values/getValues';
-import LayoutRegistration from '../../component/layoutRegistration';
+import auth from '../../../util/firebase';
+import { useAuth } from '../../../util/authContext';
+import { getValues } from '../../../api/values/getValues';
+import LayoutRegistration from '../../../component/layoutRegistration';
 
-const CompleteInstall: React.FC = () => {
+const InstallCompleted: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useAuth();
 
@@ -46,7 +46,7 @@ const CompleteInstall: React.FC = () => {
         </div>
         <div className={styles.buttonArea}>
           <div>次に、組織のバリューを登録しましょう</div>
-          <Link href='/values'>
+          <Link href='/install/values'>
             <div className={styles.valueButton}>
               <img src='/assets/icon_heart.png' className={styles.iconHeart} />
               <div>バリュー登録へ</div>
@@ -58,5 +58,5 @@ const CompleteInstall: React.FC = () => {
   )
 }
 
-export default CompleteInstall;
+export default InstallCompleted;
 
