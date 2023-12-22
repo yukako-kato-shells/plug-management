@@ -6,13 +6,13 @@ import { toast } from 'react-toastify';
 import _ from 'lodash';
 
 import styles from './index.module.css';
-import { MAX_COUNT_VALUES } from '../../util/constant';
-import { useAuth } from '../../util/authContext';
-import { getValues } from '../../api/values/getValues';
-import { IValue, defaultIValue } from '../../interfaces/IValue';
-import FormValue from '../../component/formValue';
-import LayoutRegistration from '../../component/layoutRegistration';
-import DefaultInputArea from '../../component/value/defaultInputArea';
+import { useAuth } from '../../../util/authContext';
+import { MAX_COUNT_VALUES } from '../../../util/constant';
+import { getValues } from '../../../api/values/getValues';
+import { IValue, defaultIValue } from '../../../interfaces/IValue';
+import FormValue from '../../../component/formValue';
+import LayoutRegistration from '../../../component/layoutRegistration';
+import DefaultInputArea from '../../../component/value/defaultInputArea';
 
 
 const InputValues: FC = () =>{
