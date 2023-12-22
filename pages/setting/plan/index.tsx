@@ -11,7 +11,7 @@ import { IResGetPlan, defaultIResGetPlan } from '../../../interfaces/IGetPlan';
 import Layout from '../../../component/layout'
 import LayoutSetting from '../../../component/layoutSetting';
 
-const Plan: React.FC = () => {
+const SettingPlan: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useAuth();
   const [data, setData] = useState<IResGetPlan>(defaultIResGetPlan);
@@ -74,4 +74,4 @@ const Plan: React.FC = () => {
   )
 }
 
-export default Plan;
+export default SettingPlan;

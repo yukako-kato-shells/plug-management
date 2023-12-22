@@ -12,7 +12,7 @@ import Layout from '../../../component/layout';
 import LayoutSetting from '../../../component/layoutSetting';
 import IconWrapper from '../../../component/iconWrapper';
 
-const AdminUser: React.FC = () => {
+const SettingMember: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useAuth();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -86,4 +86,4 @@ const AdminUser: React.FC = () => {
   )
 }
 
-export default AdminUser;
+export default SettingMember;

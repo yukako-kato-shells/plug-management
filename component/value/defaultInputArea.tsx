@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+
 import ButtonDefault from '../buttonDefault'
 import styles from './defaultInputArea.module.css';
 import { IValue, defaultIValue } from '../../interfaces/IValue';
@@ -23,7 +24,7 @@ const DefaultInputArea: React.FC<DefaultInputAreaProps> = (props) => {
       </div>
       <div className={styles.content}>
         <div>バリューの入力が完了した／後で入力する場合は</div>
-        <ButtonDefault text='最後のステップへ進む' href='/channel' />
+        <ButtonDefault text='最後のステップへ進む' href='/install/channel' />
       </div>
     </div>
   )

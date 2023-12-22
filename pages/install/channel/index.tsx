@@ -3,19 +3,19 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 
 import styles from './index.module.css';
-import { useAuth } from '../../util/authContext';
+import { useAuth } from '../../../util/authContext';
 import {
   IResGetWOrkspaceSettingChannel,
   IResGetWorkspaceSetting,
   defaultIResGetWorkspaceSetting,
   defaultIResGetWorkspaceSettingChannel,
- } from '../../interfaces/IGetWorkspaceSetting';
-import { getWorkspaceSetting } from '../../api/getWorkspaceSetting';
-import LayoutRegistration from '../../component/layoutRegistration';
-import { IReqUpdateNoticeChannel } from '../../interfaces/IUpdateNoticeChannel';
-import { updateNoticeChannel } from '../../api/updateNoticeChannel';
-import ButtonDefault from '../../component/buttonDefault';
-import CheckBox from '../../component/checkbox';
+ } from '../../../interfaces/IGetWorkspaceSetting';
+import { getWorkspaceSetting } from '../../../api/getWorkspaceSetting';
+import LayoutRegistration from '../../../component/layoutRegistration';
+import { IReqUpdateNoticeChannel } from '../../../interfaces/IUpdateNoticeChannel';
+import { updateNoticeChannel } from '../../../api/updateNoticeChannel';
+import ButtonDefault from '../../../component/buttonDefault';
+import CheckBox from '../../../component/checkbox';
 
 const SelectChannel: React.FC = () => {
   const router = useRouter();
@@ -27,7 +27,7 @@ const SelectChannel: React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    // if (!router.isReady || !router.query || !currentUser) return;
+    if (!router.isReady || !router.query || !currentUser) return;
 
     getWorkspaceSetting().then((res) => {
       setData(res);

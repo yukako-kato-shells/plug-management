@@ -1,0 +1,30 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  gap: 24px;
+}
+
+.title {
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.logo {
+  width: 195px;
+  height: 98px;
+  filter: grayscale(0.7);
+}
+
+.logoFailed {
+  width: 120px;
+  height: 120px;
+  filter: grayscale(0.7);
+}
+
+.memo {
+  color: var(--color-memo);
+}

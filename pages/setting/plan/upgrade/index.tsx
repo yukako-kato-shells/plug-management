@@ -13,7 +13,7 @@ import LayoutSetting from '../../../../component/layoutSetting';
 import UpgradePlanDetail from '../../../../component/plan/planDetail';
 import UpgradePlanBilling from '../../../../component/plan/billing';
 
-const Upgrade: React.FC = () => {
+const SettingPlanUpgrade: React.FC = () => {
   const router = useRouter();
   const { currentUser } = useAuth();
   const [data, setData] = useState<IResGetPlanUpgrade>(defaultIResGetPlanUpgrade);
@@ -74,4 +74,4 @@ const Upgrade: React.FC = () => {
   )
 }
 
-export default Upgrade
+export default SettingPlanUpgrade;
