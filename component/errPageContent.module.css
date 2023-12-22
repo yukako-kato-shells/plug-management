@@ -22,10 +22,6 @@
     margin: 16px 0;
   }
 
-  .wrapper p {
-    text-align: center;
-  }
-
   .buttonArea {
     margin: 24px 0px;
   }
@@ -33,25 +29,21 @@
 
 /* Tablet */
 @media screen and (min-width: 520px) and (max-width: 959px) {
-  .wrapper {
-    width: 90vw;
-    height: calc(100vh - 240px);
-    padding-top: 0px;
-  }
+.wrapper {
+  width: 90vw;
+  height: calc(100vh - 240px);
+  padding-top: 0px;
+}
 
-  .errCode {
-    font-size: 100px;
-  }
+.errCode {
+  font-size: 100px;
+}
 
-  .wrapper img {
-    width: 100px;
-    filter: grayscale(0.7);
-    margin: 8px 0;
-  }
-
-  .wrapper p {
-    text-align: center;
-  }
+.wrapper img {
+  width: 100px;
+  filter: grayscale(0.7);
+  margin: 8px 0;
+}
 }
 
 /* Mobile */
@@ -76,10 +68,6 @@
   .wrapper img {
       width: 100px;
       filter: grayscale(0.7);
-  }
-
-  .wrapper p {
-    text-align: center;
   }
 
   .buttonArea {
