@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './layoutSetting.module.css';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface LayoutSettingProps {
   title: string;
@@ -10,7 +11,8 @@ interface LayoutSettingProps {
 }
 
 const LayoutSetting: React.FC<LayoutSettingProps> = (props) => {
-  const [selectedMenuName, setSelectedMenuName] = useState<string>('value');
+  const router = useRouter();
+  const [selectedMenuName, setSelectedMenuName] = useState<string>('workspace');
 
   useEffect(() => {
     // メニューの現在位置をLocalStorageから取得
@@ -18,7 +20,11 @@ const LayoutSetting: React.FC<LayoutSettingProps> = (props) => {
     if (selectedMenu != null) {
       setSelectedMenuName(selectedMenu);
     }
-  }, [])
+    if (selectedMenuName != selectedMenu) {
+      setSelectedMenuName(String(selectedMenu));
+      router.push("/setting/" + selectedMenu)
+    }
+  }, [router, selectedMenuName])
 
   const onClick = (labelName: string) => {
     setSelectedMenuName(labelName);

@@ -46,7 +46,7 @@ const MenuBar: React.FC<MenuBarProps> = (props) => {
       </Link>
       { props.isAdmin &&
         <Link
-          href='/setting/mail'
+          href='/setting/workspace'
           className={styles.menuButton + ' ' + (props.selectedIconName == 'setting' ? styles.menuButtonSelected : '')}
           onClick={() => {
             localStorage.setItem('selectedMenu', 'setting');
