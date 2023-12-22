@@ -33,6 +33,7 @@ const MemberDashboard: React.FC = () => {
     // 初回アクセスの場合は、`start_month`と`end_month`は空の状態で送信。
     // その場合は、期初月から　12ヶ月を指定されたものとしてデータが返却される
     const body: IReqGetMemberDashboard = {
+      member_uid: router.query.uid as string,
       start_month: String(router.query.start_month ? router.query.start_month : ''),
       end_month: String(router.query.end_month ? router.query.end_month : ''),
       value_uid: valueUID,

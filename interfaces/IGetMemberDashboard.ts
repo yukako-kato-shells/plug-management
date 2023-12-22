@@ -1,4 +1,5 @@
 export interface IReqGetMemberDashboard {
+  member_uid: string;
   start_month: string;
   end_month: string;
   value_uid: string;
