@@ -38,6 +38,22 @@
   background-color: white;
   border-radius: 0px 16px 16px 16px;
   height: 100%;
+  height: calc(100vh - 60px - 24px * 2 - 32px - 32px - 46px);
+}
+
+.cardInner {
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  /*IE(Internet Explorer)・Microsoft Edgeへの対応*/
+  -ms-overflow-style: none;
+  /*Firefoxへの対応*/
+  scrollbar-width: none;
+}
+
+ /*Google Chrome、Safariへの対応*/
+ .cardInner::-webkit-scrollbar{
+  display: none;
 }
 
 .coreAction {
